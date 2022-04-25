@@ -135,3 +135,5 @@ set t_Co=256
 call plug#begin()
   Plug 'neovim/nvim-lspconfig'
 call plug#end()
+
+lua require('lspconfig').tsserver.setup{}
