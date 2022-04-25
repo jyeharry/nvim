@@ -128,12 +128,12 @@ noremap <Leader>Y "+y
 set cursorline
 
 set background=dark
+colorscheme desert
 
 set t_Co=256
 
 " Put plugins here
 call plug#begin()
-  Plug 'neovim/nvim-lspconfig'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-lua require('lspconfig').tsserver.setup{}
