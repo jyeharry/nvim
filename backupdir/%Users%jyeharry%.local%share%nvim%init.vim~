@@ -148,6 +148,11 @@ call plug#begin()
   Plug 'tpope/vim-surround'
 
   Plug 'prettier/vim-prettier'
+
+  Plug 'nvim-lualine/lualine.nvim'
+
+  " If you want to have icons in your statusline choose one of these
+  Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
 
 " Available values: 'hard', 'medium'(default), 'soft'
