@@ -81,7 +81,7 @@ vnoremap <S-Down> :m '>+1<CR>gv=gv
 nnoremap gf <C-w>gf
 
 " Duplicate line
-nnoremap <C-d> Y \| p
+" nnoremap <C-d> Y \| p
 
 " Set backup directories
 set backupdir=~/.local/share/nvim/backupdir//,.
@@ -168,6 +168,8 @@ call plug#begin()
   Plug 'vim-airline/vim-airline-themes'
 
   Plug 'prettier/vim-prettier'
+
+  Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 set signcolumn=yes
@@ -248,7 +250,7 @@ function! AirlineInit()
 "    let g:airline_section_c = airline#section#create(['%t'])
     let g:airline_section_c = airline#section#create(['%{expand("%:~:.")}'])
     let g:airline_section_x = airline#section#create(['filetype'])
-    let g:airline_section_y = airline#section#create(['ffenc'])
+    let g:airline_section_y = airline#section#create(['ffenc',' ','%{gutentags#statusline()}'])
     let g:airline_section_z = airline#section#create(['%l','/','%L',':','%c'])
 endfunction
 autocmd VimEnter * call AirlineInit()
@@ -329,32 +331,17 @@ augroup end
 
 " End Coc stuff
 
+let g:gutentags_cache_dir = '~/.local/share/nvim/tags/'
+
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all"
-  ensure_installed = { "all" },
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
+require('nvim-treesitter.configs').setup({
+    ensure_installed = "maintained",
+    highlight = { enable = true },
+    indent = { enable = true },
+    context_commentstring = { enable = true },
+    autotag = { enable = true },
+    endwise = { enable = true },
+})
 
-  -- List of parsers to ignore installing (for "all")
-  ignore_install = {},
-
-  highlight = {
-    -- `false` will disable the whole extension
-    enable = true,
-
-    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
-    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
-    -- the name of the parser)
-    -- list of language that will be disabled
-    disable = {},
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
 EOF

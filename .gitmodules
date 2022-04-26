@@ -40,3 +40,6 @@
 [submodule "plugged/nvim-treesitter"]
 	path = plugged/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "plugged/vim-gutentags"]
+	path = plugged/vim-gutentags
+	url = https://github.com/ludovicchabant/vim-gutentags.git
