@@ -4,9 +4,6 @@
 [submodule "plugged/everforest"]
 	path = plugged/everforest
 	url = https://github.com/sainnhe/everforest.git
-[submodule "plugged/nvim-treesitter"]
-	path = plugged/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "plugged/pear-tree"]
 	path = plugged/pear-tree
 	url = https://github.com/tmsvg/pear-tree.git
