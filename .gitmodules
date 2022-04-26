@@ -37,3 +37,6 @@
 [submodule "plugged/vim-gitgutter"]
 	path = plugged/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "plugged/oceanic-next"]
+	path = plugged/oceanic-next
+	url = https://github.com/mhartington/oceanic-next.git

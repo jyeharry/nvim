@@ -27,7 +27,7 @@ else
   set backup		" keep a backup file (restore to previous version)
   if has('persistent_undo')
     set undofile	" keep an undo file (undo changes after closing)
-    set undodir=/Users/jyeharry/.local/share/nvim/undodir
+    set undodir=~/.local/share/nvim/undodir
   endif
 endif
 
@@ -65,6 +65,7 @@ endif
 set foldmethod=indent
 nnoremap <space> za
 set nofoldenable
+set foldlevel=999
 
 " Shift tab to complete word
 inoremap <S-Tab> <C-P>
@@ -148,6 +149,8 @@ call plug#begin()
 
   Plug 'sainnhe/everforest'
 
+  Plug 'mhartington/oceanic-next'
+
   Plug 'tpope/vim-fugitive'
 
   Plug 'airblade/vim-gitgutter'
@@ -173,10 +176,17 @@ call plug#end()
 set signcolumn=yes
 
 " Available values: 'hard', 'medium'(default), 'soft'
-let g:everforest_background = 'hard'
-" For better performance
-let g:everforest_better_performance = 1
-colorscheme everforest
+"let g:everforest_background = 'hard'
+"" For better performance
+"let g:everforest_better_performance = 1
+"colorscheme everforest
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+syntax enable
+colo OceanicNext
+
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
@@ -257,6 +267,7 @@ let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#bufferline#enabled = 0
 
 " Coc stuff
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-go', 'coc-css', 'coc-html', 'coc-sh', 'coc-markdownlint', 'coc-yaml']
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
