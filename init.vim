@@ -139,6 +139,8 @@ set t_Co=256
 
 set updatetime=100
 
+set notildeop
+
 " Put plugins here
 call plug#begin()
   Plug 'preservim/NERDTree' |
@@ -191,6 +193,7 @@ let g:oceanic_next_terminal_italic = 1
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#quickfix_auto_focus = 0
+let g:prettier#autoformat_config_present = 1
 
 let g:prettier#config#print_width = 120
 let g:prettier#config#tab_width = 2
