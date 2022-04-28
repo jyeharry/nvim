@@ -185,7 +185,7 @@ set signcolumn=yes
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 colo OceanicNext
-highlight CocHighlightText ctermbg=Grey guibg=Grey
+highlight CocHighlightText ctermbg=Grey guibg=Grey ctermfg=Black guifg=Black
 
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
