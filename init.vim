@@ -141,6 +141,42 @@ set updatetime=100
 
 set notildeop
 
+set path=.,**
+
+" Ignore certain files and directories when searching
+set wildignore=*.swp,*.bak
+set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*
+set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
+set wildignore+=tags
+set wildignore+=*.tar.*
+set wildignore+=*/node_modules/**/*,*/dist/**/*
+set wildignorecase
+
+" Cycle buffers
+nnoremap <PageUp>   :bnext<CR>
+nnoremap <PageDown> :bprevious<CR>
+nnoremap gb :ls<CR>:b<Space>
+
+" Search files project wide
+nnoremap <leader>f :find *
+nnoremap <leader>s :sfind *
+nnoremap <leader>v :vert sfind *
+nnoremap <leader>t :tabfind *
+
+" Search files from current directory
+nnoremap <leader>F :find <C-R>=expand('%:p:h').'*/**/*'<CR>
+nnoremap <leader>S :sfind <C-R>=expand('%:p:h').'*/**/*'<CR>
+nnoremap <leader>V :vert sfind <C-R>=expand('%:p:h').'*/**/*'<CR>
+nnoremap <leader>T :tabfind <C-R>=expand('%:p:h').'*/**/*'<CR>
+
+" Search buffers
+set wildcharm=<C-z>
+nnoremap <leader>b :buffer <C-z>
+nnoremap <leader>B :sbuffer <C-z>
+
+" Search tags
+nnoremap <leader>j :tjump /
+
 " Put plugins here
 call plug#begin()
   Plug 'preservim/NERDTree' |
@@ -322,10 +358,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
