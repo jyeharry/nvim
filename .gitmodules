@@ -43,3 +43,6 @@
 [submodule "plugged/vim-gutentags"]
 	path = plugged/vim-gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule "plugged/ctrlsf.vim"]
+	path = plugged/ctrlsf.vim
+	url = https://github.com/dyng/ctrlsf.vim.git

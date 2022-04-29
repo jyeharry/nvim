@@ -208,6 +208,9 @@ call plug#begin()
   Plug 'prettier/vim-prettier'
 
   Plug 'ludovicchabant/vim-gutentags'
+
+  Plug 'dyng/ctrlsf.vim'
+
 call plug#end()
 
 set signcolumn=yes
@@ -370,6 +373,48 @@ augroup end
 " End Coc stuff
 
 let g:gutentags_cache_dir = '~/.local/share/nvim/tags/'
+
+" Ctrlsf stuff
+
+" Use the ack tool as the backend
+let g:ctrlsf_backend = 'ack'
+" Auto close the results panel when opening a file
+let g:ctrlsf_auto_close = { "normal":0, "compact":0 }
+" Immediately switch focus to the search window
+let g:ctrlsf_auto_focus = { "at":"start" }
+" Don't open the preview window automatically
+let g:ctrlsf_auto_preview = 0
+" Use the smart case sensitivity search scheme
+let g:ctrlsf_case_sensitive = 'smart'
+" Normal mode, not compact mode
+let g:ctrlsf_default_view = 'normal'
+" Use absolute search by default
+let g:ctrlsf_regex_pattern = 0
+" Position of the search window
+let g:ctrlsf_position = 'right'
+" Width or height of search window
+"let g:ctrlsf_winsize = '46'
+" Search from the current working directory
+let g:ctrlsf_default_root = 'project'
+" Directories to ignore during search
+let g:ctrlsf_ignore_dir = ['bower_components', 'node_modules', 'dist', '.git']
+
+" (Ctrl+F) Open search prompt (Normal Mode)
+nmap <C-F> <Plug>CtrlSFPrompt 
+" (Ctrl-F + F) Open search prompt with selection (Visual Mode)
+xmap <C-F>s <Plug>CtrlSFVwordPath
+" (Ctrl-F + f) Perform search with selection (Visual Mode)
+xmap <C-F>f <Plug>CtrlSFVwordExec
+" (Ctrl-F + w) Open search prompt with current word (Normal Mode)
+nmap <C-F>w <Plug>CtrlSFCwordPath
+" (Ctrl-F + o )Open CtrlSF window (Normal Mode)
+nnoremap <C-F>o :CtrlSFOpen<CR>
+" (Ctrl-F + t) Toggle CtrlSF window (Normal Mode)
+nnoremap <C-F>t :CtrlSFToggle<CR>
+" (Ctrl-F + t) Toggle CtrlSF window (Insert Mode)
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+
+"End Ctrlsf stuff
 
 lua <<EOF
 
