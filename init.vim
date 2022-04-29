@@ -260,18 +260,29 @@ let g:pear_tree_repeatable_expand=0
 
 let NERDTreeWinSize=21
 
+" Check if NERDTree is open or active
+function! IsNERDTreeOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Open NERDTree and do NERDTreeFind if NERDTree is not open, close otherwise
+function! ToggleNERDTree()
+  if IsNERDTreeOpen()
+    NERDTreeClose
+  else
+    NERDTreeFind
+  endif
+endfunction
+
 nnoremap <leader>n :NERDTreeFocus<CR>
 " nnoremap <C-n> :NERDTree<CR>
 " Mirror the NERDTree before showing it. This makes it the same on all tabs.
 nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
-nnoremap <C-p> :NERDTreeToggleVCS<CR>
+nnoremap <C-p> :call ToggleNERDTree()<CR>
 nnoremap <leader>c :NERDTreeCWD<CR>
-nnoremap <leader>r :NERDTreeRefreshRoot<CR>
+nnoremap <leader>r :NERDTreeVCS<CR>
 
 let NERDTreeShowHidden=1
-
-" Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
@@ -419,7 +430,7 @@ inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 lua <<EOF
 
 require('nvim-treesitter.configs').setup({
-    ensure_installed = "maintained",
+    ensure_installed = "all",
     highlight = { enable = true },
     indent = { enable = true },
     context_commentstring = { enable = true },
