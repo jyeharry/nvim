@@ -78,7 +78,7 @@ inoremap <S-Down> <Esc>:m+<CR>
 vnoremap <S-Up> :m '<-2<CR>gv=gv
 vnoremap <S-Down> :m '>+1<CR>gv=gv
 
-nnoremap gf <C-w>gf
+"nnoremap gf <C-w>gf
 
 " Duplicate line
 " nnoremap <C-d> Y \| p
