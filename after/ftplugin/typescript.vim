@@ -1,2 +1,2 @@
 setlocal suffixesadd+=.ts
-setlocal include=from
+setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)

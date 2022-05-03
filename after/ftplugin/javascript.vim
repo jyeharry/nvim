@@ -1,2 +1,2 @@
 setlocal suffixesadd+=.js
-setlocal include=from
+setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
