@@ -153,8 +153,8 @@ set wildignore+=*/node_modules/**/*,*/dist/**/*
 set wildignorecase
 
 " Cycle buffers
-nnoremap <PageUp>   :bnext<CR>
-nnoremap <PageDown> :bprevious<CR>
+nnoremap <PageUp>   :bprevious<CR>
+nnoremap <PageDown> :bnext<CR>
 nnoremap gb :ls<CR>:b<Space>
 
 " Search files project wide
