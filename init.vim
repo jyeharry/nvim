@@ -67,6 +67,9 @@ nnoremap <space> za
 set nofoldenable
 set foldlevel=999
 
+" Close all folds to cursor position
+nnoremap zz :let &l:foldlevel = indent('.') / &shiftwidth<CR>zm
+
 " Shift tab to complete word
 inoremap <S-Tab> <C-P>
 
@@ -174,6 +177,9 @@ nnoremap <leader>B :sbuffer <C-z>
 
 " Search tags
 nnoremap <leader>j :tjump /
+
+" Copy full path to clipboard
+nnoremap <leader>path :let @+=expand('%:p')<CR>
 
 " Put plugins here
 call plug#begin()
