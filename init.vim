@@ -67,6 +67,10 @@ nnoremap <space> za
 set nofoldenable
 set foldlevel=999
 
+" Restore last cursor position
+autocmd BufRead * autocmd FileType <buffer> ++once
+      \ if &ft !~# 'commit\|rebase' && line("'\"") > 1 && line("'\"") <= line("$") | exe 'normal! g`"' | endif
+
 " Close all folds to cursor position
 nnoremap zz :let &l:foldlevel = indent('.') / &shiftwidth<CR>zm
 
@@ -141,6 +145,8 @@ set t_Co=256
 set updatetime=100
 
 set notildeop
+
+set shada+=%,
 
 set path=.,**
 
