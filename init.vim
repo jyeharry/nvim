@@ -221,6 +221,8 @@ call plug#begin()
 
   Plug 'dyng/ctrlsf.vim'
 
+  Plug 'tpope/vim-fugitive'
+
 call plug#end()
 
 set signcolumn=yes
