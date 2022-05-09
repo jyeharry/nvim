@@ -165,10 +165,10 @@ nnoremap <PageDown> :bnext<CR>
 nnoremap gb :ls<CR>:b<Space>
 
 " Search files project wide
-nnoremap <leader>f :find *
-nnoremap <leader>s :sfind *
-nnoremap <leader>v :vert sfind *
-nnoremap <leader>t :tabfind *
+nnoremap <leader>f :find ./**/*
+nnoremap <leader>s :sfind ./**/*
+nnoremap <leader>v :vert sfind ./**/*
+nnoremap <leader>t :tabfind ./**/*
 
 " Search files from current directory
 nnoremap <leader>F :find <C-R>=expand('%:p:h').'*/**/*'<CR>
@@ -226,12 +226,6 @@ call plug#begin()
 call plug#end()
 
 set signcolumn=yes
-
-" Available values: 'hard', 'medium'(default), 'soft'
-"let g:everforest_background = 'hard'
-"" For better performance
-"let g:everforest_better_performance = 1
-"colorscheme everforest
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
