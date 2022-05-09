@@ -165,10 +165,10 @@ nnoremap <PageDown> :bnext<CR>
 nnoremap gb :ls<CR>:b<Space>
 
 " Search files project wide
-nnoremap <leader>f :find ./**/*
-nnoremap <leader>s :sfind ./**/*
-nnoremap <leader>v :vert sfind ./**/*
-nnoremap <leader>t :tabfind ./**/*
+nnoremap <leader>f :find ./*
+nnoremap <leader>s :sfind ./*
+nnoremap <leader>v :vert sfind ./*
+nnoremap <leader>t :tabfind ./*
 
 " Search files from current directory
 nnoremap <leader>F :find <C-R>=expand('%:p:h').'*/**/*'<CR>
