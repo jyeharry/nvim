@@ -215,8 +215,6 @@ call plug#begin()
 
   Plug 'vim-airline/vim-airline-themes'
 
-  Plug 'prettier/vim-prettier'
-
   Plug 'ludovicchabant/vim-gutentags'
 
   Plug 'dyng/ctrlsf.vim'
