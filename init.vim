@@ -404,7 +404,7 @@ let g:ctrlsf_case_sensitive = 'smart'
 " Normal mode, not compact mode
 let g:ctrlsf_default_view = 'normal'
 " Use absolute search by default
-let g:ctrlsf_regex_pattern = 0
+let g:ctrlsf_regex_pattern = 1
 " Position of the search window
 let g:ctrlsf_position = 'right'
 " Width or height of search window
