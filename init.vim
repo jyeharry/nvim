@@ -184,8 +184,10 @@ nnoremap <leader>B :sbuffer <C-z>
 " Search tags
 nnoremap <leader>j :tjump /
 
-" Copy full path to clipboard
-nnoremap <leader>path :let @+=expand('%:p')<CR>
+" Copy absolute path to clipboard
+nnoremap <leader>ap :let @+=expand('%:p')<CR>
+" Copy relative path to clipboard
+nnoremap <leader>rp :let @+=expand('%:.')<CR>
 
 " Mega search
 set grepprg=rg\ --vimgrep
