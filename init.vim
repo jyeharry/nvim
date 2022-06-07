@@ -443,7 +443,6 @@ let g:ctrlsf_ignore_dir = ['bower_components', 'node_modules', 'dist', '.git']
 
 " (Ctrl+F) Open search prompt (Normal Mode)
 " nmap <C-F> <Plug>CtrlSFPrompt 
-nnormap <leader>cf <Plug>CtrlSFPrompt
 " " (Ctrl-F + F) Open search prompt with selection (Visual Mode)
 " xmap <C-F>s <Plug>CtrlSFVwordPath
 " " (Ctrl-F + f) Perform search with selection (Visual Mode)
@@ -456,6 +455,9 @@ nnormap <leader>cf <Plug>CtrlSFPrompt
 " nnoremap <C-F>t :CtrlSFToggle<CR>
 " " (Ctrl-F + t) Toggle CtrlSF window (Insert Mode)
 " inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+
+nnoremap <leader>cf <Plug>CtrlSFPrompt
+xnoremap <leader>cf <Plug>CtrlSFVwordPath
 
 "End Ctrlsf stuff
 
