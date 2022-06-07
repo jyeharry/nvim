@@ -187,6 +187,30 @@ nnoremap <leader>j :tjump /
 " Copy full path to clipboard
 nnoremap <leader>path :let @+=expand('%:p')<CR>
 
+" Mega search
+set grepprg=rg\ --vimgrep
+set grepformat^=%f:%l:%c:%m
+
+function! Grep(...)
+    return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+endfunction
+
+command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
+command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
+
+augroup quickfix
+  autocmd!
+  autocmd QuickFixCmdPost cgetexpr cwindow
+  autocmd QuickFixCmdPost lgetexpr lwindow
+augroup END
+
+cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Grep' : 'grep'
+cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
+" End mega search
+
+vnoremap <C-f> y:Grep <C-R>=escape(@",'/\')<CR> 
+nnoremap <C-f> :Grep 
+
 " Put plugins here
 call plug#begin()
   Plug 'preservim/NERDTree' |
@@ -229,6 +253,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 colo OceanicNext
 highlight CocHighlightText ctermbg=237 guibg=#424c59
+highlight Search guibg=#2563a1 guifg=white
 
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
@@ -417,19 +442,20 @@ let g:ctrlsf_default_root = 'project'
 let g:ctrlsf_ignore_dir = ['bower_components', 'node_modules', 'dist', '.git']
 
 " (Ctrl+F) Open search prompt (Normal Mode)
-nmap <C-F> <Plug>CtrlSFPrompt 
-" (Ctrl-F + F) Open search prompt with selection (Visual Mode)
-xmap <C-F>s <Plug>CtrlSFVwordPath
-" (Ctrl-F + f) Perform search with selection (Visual Mode)
-xmap <C-F>f <Plug>CtrlSFVwordExec
-" (Ctrl-F + w) Open search prompt with current word (Normal Mode)
-nmap <C-F>w <Plug>CtrlSFCwordPath
-" (Ctrl-F + o )Open CtrlSF window (Normal Mode)
-nnoremap <C-F>o :CtrlSFOpen<CR>
-" (Ctrl-F + t) Toggle CtrlSF window (Normal Mode)
-nnoremap <C-F>t :CtrlSFToggle<CR>
-" (Ctrl-F + t) Toggle CtrlSF window (Insert Mode)
-inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
+" nmap <C-F> <Plug>CtrlSFPrompt 
+nnormap <leader>cf <Plug>CtrlSFPrompt
+" " (Ctrl-F + F) Open search prompt with selection (Visual Mode)
+" xmap <C-F>s <Plug>CtrlSFVwordPath
+" " (Ctrl-F + f) Perform search with selection (Visual Mode)
+" xmap <C-F>f <Plug>CtrlSFVwordExec
+" " (Ctrl-F + w) Open search prompt with current word (Normal Mode)
+" nmap <C-F>w <Plug>CtrlSFCwordPath
+" " (Ctrl-F + o )Open CtrlSF window (Normal Mode)
+" nnoremap <C-F>o :CtrlSFOpen<CR>
+" " (Ctrl-F + t) Toggle CtrlSF window (Normal Mode)
+" nnoremap <C-F>t :CtrlSFToggle<CR>
+" " (Ctrl-F + t) Toggle CtrlSF window (Insert Mode)
+" inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 "End Ctrlsf stuff
 
