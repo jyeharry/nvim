@@ -391,8 +391,8 @@ let g:gutentags_cache_dir = '~/.local/share/nvim/tags/'
 
 " Ctrlsf stuff
 
-" Use the ack tool as the backend
-let g:ctrlsf_backend = 'ack'
+" Use the rg tool as the backend
+let g:ctrlsf_backend = 'rg'
 " Auto close the results panel when opening a file
 let g:ctrlsf_auto_close = { "normal":0, "compact":0 }
 " Immediately switch focus to the search window
@@ -407,6 +407,8 @@ let g:ctrlsf_default_view = 'normal'
 let g:ctrlsf_regex_pattern = 1
 " Position of the search window
 let g:ctrlsf_position = 'right'
+" Async search
+let g:ctrlsf_search_mode = 'async'
 " Width or height of search window
 "let g:ctrlsf_winsize = '46'
 " Search from the current working directory
