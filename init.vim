@@ -132,6 +132,7 @@ nmap <silent><C-Space> <C-w><C-]><C-w>T
 nmap <C-@> <C-Space>
 
 vnoremap // y/\v<C-R>=escape(@",'/\')<CR><CR>
+nnoremap / /\v
 
 noremap <Leader>y "*y
 noremap <Leader>Y "+y
