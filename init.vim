@@ -131,7 +131,7 @@ cabbrev bterm bo term
 nmap <silent><C-Space> <C-w><C-]><C-w>T
 nmap <C-@> <C-Space>
 
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+vnoremap // y/\v<C-R>=escape(@",'/\')<CR><CR>
 
 noremap <Leader>y "*y
 noremap <Leader>Y "+y
