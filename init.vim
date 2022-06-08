@@ -254,6 +254,8 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
 
   Plug 'jremmen/vim-ripgrep'
+
+  Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 set signcolumn=yes
@@ -473,6 +475,9 @@ xnoremap <leader>cf <Plug>CtrlSFVwordPath
 vnoremap <C-f> y:Rg '<C-R>=escape(@",'/\')<CR>' 
 nnoremap <C-f> :Rg 
 
+highlight IndentBlanklineChar guifg=#2a3c47 gui=nocombine
+highlight IndentBlanklineContextChar guifg=#425e6f gui=nocombine
+
 lua <<EOF
 
 require('nvim-treesitter.configs').setup({
@@ -482,6 +487,11 @@ require('nvim-treesitter.configs').setup({
     context_commentstring = { enable = true },
     autotag = { enable = true },
     endwise = { enable = true },
+})
+
+require("indent_blankline").setup({
+    show_current_context = true,
+    show_current_context_start = true,
 })
 
 EOF

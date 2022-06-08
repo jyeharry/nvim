@@ -52,3 +52,6 @@
 [submodule "plugged/vim-ripgrep"]
 	path = plugged/vim-ripgrep
 	url = https://github.com/jremmen/vim-ripgrep.git
+[submodule "plugged/indent-blankline.nvim"]
+	path = plugged/indent-blankline.nvim
+	url = https://github.com/lukas-reineke/indent-blankline.nvim.git
