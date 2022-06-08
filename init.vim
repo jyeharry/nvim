@@ -189,29 +189,35 @@ nnoremap <leader>ap :let @+=expand('%:p')<CR>
 " Copy relative path to clipboard
 nnoremap <leader>rp :let @+=expand('%:.')<CR>
 
-" Mega search
-set grepprg=rg\ --vimgrep
-set grepformat^=%f:%l:%c:%m
-
-function! Grep(...)
-    return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
-endfunction
-
-command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
-command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
-
-augroup quickfix
-  autocmd!
-  autocmd QuickFixCmdPost cgetexpr cwindow
-  autocmd QuickFixCmdPost lgetexpr lwindow
-augroup END
-
-cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Grep' : 'grep'
-cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
+" Mega search (doesn't quite work with neovim; searches for text fine but not special characters)
+"set grepprg=rg\ --vimgrep
+"set grepformat^=%f:%l:%c:%m
+"
+"function! Grep(...)
+"    return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
+"endfunction
+"
+"command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
+"command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
+"
+"augroup quickfix
+"  autocmd!
+"  autocmd QuickFixCmdPost cgetexpr cwindow
+"  autocmd QuickFixCmdPost lgetexpr lwindow
+"augroup END
+"
+"cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Grep' : 'grep'
+"cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
 " End mega search
 
-vnoremap <C-f> y:Grep <C-R>=escape(@",'/\')<CR> 
-nnoremap <C-f> :Grep 
+" Close vim if quickfix window is last remaining window
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+aug END
+
+" Close quickfix window when selecting item from list
+autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
 " Put plugins here
 call plug#begin()
@@ -247,6 +253,7 @@ call plug#begin()
 
   Plug 'tpope/vim-fugitive'
 
+  Plug 'jremmen/vim-ripgrep'
 call plug#end()
 
 set signcolumn=yes
@@ -437,7 +444,7 @@ let g:ctrlsf_position = 'right'
 " Async search
 let g:ctrlsf_search_mode = 'async'
 " Width or height of search window
-"let g:ctrlsf_winsize = '46'
+let g:ctrlsf_winsize = '70'
 " Search from the current working directory
 let g:ctrlsf_default_root = 'project'
 " Directories to ignore during search
@@ -462,6 +469,9 @@ nnoremap <leader>cf <Plug>CtrlSFPrompt
 xnoremap <leader>cf <Plug>CtrlSFVwordPath
 
 "End Ctrlsf stuff
+
+vnoremap <C-f> y:Rg <C-R>=escape(@",'/\')<CR> 
+nnoremap <C-f> :Rg 
 
 lua <<EOF
 

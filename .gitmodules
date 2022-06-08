@@ -49,3 +49,6 @@
 [submodule "vim-fugitive"]
 	path = vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "plugged/vim-ripgrep"]
+	path = plugged/vim-ripgrep
+	url = https://github.com/jremmen/vim-ripgrep.git
