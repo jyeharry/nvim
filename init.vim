@@ -470,7 +470,7 @@ xnoremap <leader>cf <Plug>CtrlSFVwordPath
 
 "End Ctrlsf stuff
 
-vnoremap <C-f> y:Rg <C-R>=escape(@",'/\')<CR> 
+vnoremap <C-f> y:Rg '<C-R>=escape(@",'/\')<CR>' 
 nnoremap <C-f> :Rg 
 
 lua <<EOF
