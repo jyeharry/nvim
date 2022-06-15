@@ -172,10 +172,13 @@ nnoremap <leader>v :vert sfind ./*
 nnoremap <leader>t :tabfind ./*
 
 " Search files from current directory
-nnoremap <leader>F :find <C-R>=expand('%:p:h').'/'<CR>
-nnoremap <leader>S :sfind <C-R>=expand('%:p:h').'/'<CR>
-nnoremap <leader>V :vert sfind <C-R>=expand('%:p:h').'/'<CR>
-nnoremap <leader>T :tabfind <C-R>=expand('%:p:h').'/'<CR>
+nnoremap <leader>F :find ./<C-R>=expand('%:.:h').'/'<CR>
+nnoremap <leader>S :sfind ./<C-R>=expand('%:.:h').'/'<CR>
+nnoremap <leader>V :vert sfind ./<C-R>=expand('%:.:h').'/'<CR>
+nnoremap <leader>T :tabfind ./<C-R>=expand('%:.:h').'/'<CR>
+
+" Edit new file using path of current file
+nnoremap <leader>e :edit ./<C-R>=expand('%:.:h').'/'<CR>
 
 " Search buffers
 set wildcharm=<C-z>
