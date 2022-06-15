@@ -55,3 +55,6 @@
 [submodule "plugged/indent-blankline.nvim"]
 	path = plugged/indent-blankline.nvim
 	url = https://github.com/lukas-reineke/indent-blankline.nvim.git
+[submodule "plugged/vim-test"]
+	path = plugged/vim-test
+	url = https://github.com/vim-test/vim-test.git

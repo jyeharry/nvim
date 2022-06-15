@@ -257,6 +257,8 @@ call plug#begin()
   Plug 'jremmen/vim-ripgrep'
 
   Plug 'lukas-reineke/indent-blankline.nvim'
+
+  Plug 'vim-test/vim-test'
 call plug#end()
 
 set signcolumn=yes
@@ -478,6 +480,9 @@ nnoremap <C-f> :Rg
 
 highlight IndentBlanklineChar guifg=#2a3c47 gui=nocombine
 highlight IndentBlanklineContextChar guifg=#425e6f gui=nocombine
+
+let test#strategy = 'neovim'
+let g:test#neovim#start_normal = 1
 
 lua <<EOF
 
