@@ -85,8 +85,8 @@ inoremap <S-Down> <Esc>:m+<CR>
 vnoremap <S-Up> :m '<-2<CR>gv=gv
 vnoremap <S-Down> :m '>+1<CR>gv=gv
 
-" Duplicate line
-" nnoremap <C-d> Y \| p
+" Delete selected text without yanking
+vnoremap p "_dP
 
 " Set backup directories
 set backupdir=~/.local/share/nvim/backupdir//,.
