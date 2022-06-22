@@ -86,7 +86,7 @@ vnoremap <S-Up> :m '<-2<CR>gv=gv
 vnoremap <S-Down> :m '>+1<CR>gv=gv
 
 " Delete selected text without yanking
-vnoremap p "_dP
+vnoremap p "0p
 
 " Set backup directories
 set backupdir=~/.local/share/nvim/backupdir//,.
