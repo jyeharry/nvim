@@ -189,9 +189,11 @@ nnoremap <leader>B :sbuffer <C-z>
 nnoremap <leader>j :tjump /
 
 " Copy absolute path to clipboard
-nnoremap <leader>ap :let @+=expand('%:p')<CR>
+nnoremap <leader>ap :let @+=expand('%:p')<CR>:echo 'Copied absolute path'<CR>
 " Copy relative path to clipboard
-nnoremap <leader>rp :let @+=expand('%:.')<CR>
+nnoremap <leader>rp :let @+=expand('%:.')<CR>:echo 'Copied relative path'<CR>
+" Copy filename to clipboard
+nnoremap <leader>fn :let @+=expand('%:t')<CR>:echo 'Copied filename'<CR>
 
 " Mega search (doesn't quite work with neovim; searches for text fine but not special characters)
 "set grepprg=rg\ --vimgrep
