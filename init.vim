@@ -62,6 +62,11 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
+augroup Mkdir
+  autocmd!
+  autocmd BufWritePre * call mkdir(expand("<afile>:p:h"), "p")
+augroup end
+
 set foldmethod=indent
 nnoremap <space> za
 set nofoldenable
