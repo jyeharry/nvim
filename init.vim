@@ -200,6 +200,9 @@ nnoremap <leader>rp :let @+=expand('%:.')<CR>:echo 'Copied relative path'<CR>
 " Copy filename to clipboard
 nnoremap <leader>fn :let @+=expand('%:t')<CR>:echo 'Copied filename'<CR>
 
+" Quickly resize current window width (works same as z{nr}<CR> for changing window height; v is for vertical)
+nnoremap zv :vertical resize 
+
 " Mega search (doesn't quite work with neovim; searches for text fine but not special characters)
 "set grepprg=rg\ --vimgrep
 "set grepformat^=%f:%l:%c:%m
@@ -311,7 +314,7 @@ vmap ` S`
 
 let g:pear_tree_repeatable_expand=0
 
-let NERDTreeWinSize=21
+let NERDTreeWinSize=30
 
 " Check if NERDTree is open or active
 function! IsNERDTreeOpen()        
