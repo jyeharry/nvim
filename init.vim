@@ -168,6 +168,8 @@ set wildignorecase
 " Cycle buffers
 nnoremap <PageUp>   :bprevious<CR>
 nnoremap <PageDown> :bnext<CR>
+nnoremap <C-h>   :bprevious<CR>
+nnoremap <C-l> :bnext<CR>
 nnoremap gb :ls<CR>:b<Space>
 
 " Search files project wide
@@ -197,6 +199,8 @@ nnoremap <leader>j :tjump /
 nnoremap <leader>ap :let @+=expand('%:p')<CR>:echo 'Copied absolute path'<CR>
 " Copy relative path to clipboard
 nnoremap <leader>rp :let @+=expand('%:.')<CR>:echo 'Copied relative path'<CR>
+" Copy directory name to clipboard
+nnoremap <leader>dir :let @+=expand('%:h')<CR>:echo 'Copied directory name'<CR>
 " Copy filename to clipboard
 nnoremap <leader>fn :let @+=expand('%:t')<CR>:echo 'Copied filename'<CR>
 
