@@ -58,3 +58,6 @@
 [submodule "plugged/vim-test"]
 	path = plugged/vim-test
 	url = https://github.com/vim-test/vim-test.git
+[submodule "plugged/context.vim"]
+	path = plugged/context.vim
+	url = https://github.com/wellle/context.vim.git

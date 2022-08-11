@@ -276,7 +276,11 @@ call plug#begin()
   Plug 'lukas-reineke/indent-blankline.nvim'
 
   Plug 'vim-test/vim-test'
+
+  Plug 'wellle/context.vim'
 call plug#end()
+
+let g:context_max_height = 11
 
 set signcolumn=yes
 
