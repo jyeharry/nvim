@@ -237,6 +237,31 @@ aug END
 " Close quickfix window when selecting item from list
 autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR>
 
+noremap <expr> <Plug>(StopHL) execute('nohlsearch')[-1]
+noremap! <expr> <Plug>(StopHL) execute('nohlsearch')[-1]
+
+function! HlSearch()
+    let s:pos = match(getline('.'), @/, col('.') - 1) + 1
+    echom s:pos . '|' . col('.')
+    if s:pos != col('.')
+        call StopHL()
+    endif
+endfu
+
+function! StopHL()
+    if !v:hlsearch
+        return
+    else
+        call feedkeys("\<Plug>(StopHL)", "m")
+    endif
+endfunction
+
+augroup SearchHighlight
+au!
+    au CursorMoved * call HlSearch()
+    au InsertLeave * call StopHL()
+augroup end
+
 " Put plugins here
 call plug#begin()
   Plug 'preservim/NERDTree' |
