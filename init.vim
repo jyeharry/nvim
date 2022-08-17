@@ -242,7 +242,7 @@ noremap! <expr> <Plug>(StopHL) execute('nohlsearch')[-1]
 
 function! HlSearch()
     let s:pos = match(getline('.'), @/, col('.') - 1) + 1
-    echom s:pos . '|' . col('.')
+    "echom s:pos . '|' . col('.')
     if s:pos != col('.')
         call StopHL()
     endif
