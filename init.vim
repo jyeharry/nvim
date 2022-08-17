@@ -302,6 +302,8 @@ endfunction
 
 cnoremap <expr> <CR> CCR()
 
+set clipboard=unnamedplus
+
 " Put plugins here
 call plug#begin()
   Plug 'preservim/NERDTree' |
