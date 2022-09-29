@@ -207,26 +207,7 @@ nnoremap <leader>fn :let @+=expand('%:t')<CR>:echo 'Copied filename'<CR>
 " Quickly resize current window width (works same as z{nr}<CR> for changing window height; v is for vertical)
 nnoremap zv :vertical resize 
 
-" Mega search (doesn't quite work with neovim; searches for text fine but not special characters)
-"set grepprg=rg\ --vimgrep
-"set grepformat^=%f:%l:%c:%m
-"
-"function! Grep(...)
-"    return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
-"endfunction
-"
-"command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
-"command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
-"
-"augroup quickfix
-"  autocmd!
-"  autocmd QuickFixCmdPost cgetexpr cwindow
-"  autocmd QuickFixCmdPost lgetexpr lwindow
-"augroup END
-"
-"cnoreabbrev <expr> grep (getcmdtype() ==# ':' && getcmdline() ==# 'grep') ? 'Grep' : 'grep'
-"cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
-" End mega search
+set virtualedit=all
 
 " Close vim if quickfix window is last remaining window
 aug QFClose
