@@ -283,6 +283,8 @@ endfunction
 
 cnoremap <expr> <CR> CCR()
 
+autocmd BufLeave * if &buftype=="terminal" | setlocal nobuflisted | endif
+
 set clipboard=unnamedplus
 
 " Put plugins here
