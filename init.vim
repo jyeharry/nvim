@@ -319,8 +319,6 @@ call plug#begin()
 
   Plug 'dyng/ctrlsf.vim'
 
-  Plug 'tpope/vim-fugitive'
-
   Plug 'jremmen/vim-ripgrep'
 
   Plug 'lukas-reineke/indent-blankline.nvim'
@@ -328,7 +326,12 @@ call plug#begin()
   Plug 'vim-test/vim-test'
 
   Plug 'wellle/context.vim'
+
+  Plug 'tpope/vim-commentary'
 call plug#end()
+
+nmap <C-_> gcc
+vmap <C-_> gc
 
 let g:context_max_height = 11
 
@@ -359,16 +362,6 @@ let g:prettier#config#require_pragma = 'false'
 let g:prettier#config#semi = 'false'
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'all'
-
-vmap { S{
-vmap } S}
-vmap ( S(
-vmap ) S)
-vmap [ S[
-vmap ] S]
-vmap ' S'
-vmap " S"
-vmap ` S`
 
 let g:pear_tree_repeatable_expand=0
 

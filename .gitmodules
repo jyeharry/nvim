@@ -61,3 +61,6 @@
 [submodule "plugged/context.vim"]
 	path = plugged/context.vim
 	url = https://github.com/wellle/context.vim.git
+[submodule "plugged/vim-commentary"]
+	path = plugged/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
