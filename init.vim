@@ -330,8 +330,8 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
 call plug#end()
 
-nmap <C-_> gcc
-vmap <C-_> gc
+nmap <C-/> gcc
+vmap <C-/> gc
 
 let g:context_max_height = 11
 
