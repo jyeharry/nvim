@@ -4,9 +4,6 @@
 [submodule "plugged/everforest"]
 	path = plugged/everforest
 	url = https://github.com/sainnhe/everforest.git
-[submodule "plugged/pear-tree"]
-	path = plugged/pear-tree
-	url = https://github.com/tmsvg/pear-tree.git
 [submodule "plugged/vim-surround"]
 	path = plugged/vim-surround
 	url = https://github.com/tpope/vim-surround.git
@@ -64,3 +61,6 @@
 [submodule "plugged/vim-commentary"]
 	path = plugged/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule "plugged/auto-pairs"]
+	path = plugged/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
