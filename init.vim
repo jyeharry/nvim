@@ -107,6 +107,8 @@ set smarttab
 
 set scrolloff=999
 
+set mouse-=nvi
+
 set linebreak
 
 set encoding=utf-8
@@ -166,11 +168,13 @@ set wildignore+=*/node_modules/**/*,*/dist/**/*
 set wildignorecase
 
 " Cycle buffers
+set wildcharm=<C-z>
 nnoremap <PageUp>   :bprevious<CR>
 nnoremap <PageDown> :bnext<CR>
 nnoremap <C-h>   :bprevious<CR>
 nnoremap <C-l> :bnext<CR>
 nnoremap gb :ls<CR>:b<Space>
+nnoremap gsb :ls<CR>:sb<Space>
 
 " Search files project wide
 nnoremap <leader>f :find ./*
@@ -186,11 +190,6 @@ nnoremap <leader>T :tabfind ./<C-R>=expand('%:.:h').'/'<CR>
 
 " Edit new file using path of current file
 nnoremap <leader>e :edit <C-R>=expand('%:.:h').'/'<CR>
-
-" Search buffers
-set wildcharm=<C-z>
-nnoremap <leader>b :buffer <C-z>
-nnoremap <leader>B :sbuffer <C-z>
 
 " Search tags
 nnoremap <leader>j :tjump /
