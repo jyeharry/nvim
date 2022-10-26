@@ -64,3 +64,6 @@
 [submodule "plugged/auto-pairs"]
 	path = plugged/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "plugged/onedark.nvim"]
+	path = plugged/onedark.nvim
+	url = https://github.com/navarasu/onedark.nvim.git
