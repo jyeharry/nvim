@@ -331,7 +331,7 @@ call plug#begin()
   Plug 'navarasu/onedark.nvim'
 call plug#end()
 
-nmap <C-/> gcc
+nmap <C-/> gccj
 vmap <C-/> gc
 
 let g:context_max_height = 11
