@@ -346,8 +346,8 @@ let g:oceanic_next_terminal_italic = 1
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
-let g:prettier#quickfix_auto_focus = 0
-let g:prettier#autoformat_config_present = 0
+let g:prettier#quickfix_auto_focus = 1
+let g:prettier#autoformat_config_present = 1
 
 let g:prettier#config#print_width = 80
 let g:prettier#config#tab_width = 2
