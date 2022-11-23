@@ -425,7 +425,18 @@ let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#bufferline#enabled = 0
 
 " Coc stuff
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-go', 'coc-css', 'coc-html', 'coc-sh', 'coc-markdownlint', 'coc-yaml']
+let g:coc_global_extensions = [
+      \ 'coc-clangd',
+      \ 'coc-css',
+      \ 'coc-git',
+      \ 'coc-go',
+      \ 'coc-html',
+      \ 'coc-json',
+      \ 'coc-markdownlint',
+      \ 'coc-sh',
+      \ 'coc-tsserver',
+      \ 'coc-yaml',
+      \ ]
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
