@@ -22,6 +22,15 @@ ln -s $HOME/.local/share/nvim/after $HOME/.config/nvim/after
 
 Create `tags/`, `undodir/` and `backupdir/` directories in `~/.local/share/nvim/`
 
+```bash
+mkdir ~/.local/share/nvim/{tags,undodir,backupdir}
+```
+
+NodeJS needs to be installed for CoC to work.
+
+Visit [this page](https://github.com/universal-ctags/ctags) for instructions
+on how to install Universal Ctags.
+
 Follow the installation steps on this [github page](https://github.com/powerline/fonts)
 to install powerline fonts for vim-airline. Use `Hack` font.
 
