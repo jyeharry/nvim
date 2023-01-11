@@ -288,7 +288,7 @@ set clipboard=unnamedplus
 
 " Put plugins here
 call plug#begin()
-  Plug 'preservim/NERDTree' |
+  Plug 'preservim/nerdtree' |
       \ Plug 'Xuyuanp/nerdtree-git-plugin' |
       \ Plug 'PhilRunninger/nerdtree-visual-selection'
 
@@ -331,8 +331,9 @@ call plug#begin()
   Plug 'navarasu/onedark.nvim'
 call plug#end()
 
-nmap <C-/> gccj
-vmap <C-/> gc
+nmap <C-_> gccj
+vmap <C-_> gc
+let b:commentary_startofline = 1
 
 let g:context_max_height = 11
 
@@ -434,6 +435,7 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-markdownlint',
       \ 'coc-pyright',
+      \ 'coc-solargraph',
       \ 'coc-sh',
       \ 'coc-sql',
       \ 'coc-tsserver',
