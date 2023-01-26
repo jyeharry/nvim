@@ -242,6 +242,17 @@ au!
     au InsertLeave * call StopHL()
 augroup end
 
+autocmd VimEnter * if argc() == 0 | silent! bdelete | endif
+function! DetectFileType()
+  if &filetype == ""
+    filetype detect
+    filetype plugin on
+    filetype plugin indent on
+  endif
+endfunction
+autocmd BufEnter * call DetectFileType()
+autocmd VimEnter * call DetectFileType()
+
 " make list-like commands more intuitive
 function! CCR()
     let cmdline = getcmdline()
