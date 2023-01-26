@@ -11,6 +11,23 @@
 "	      for Haiku:  ~/config/settings/vim/vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
+" Tips for using help:
+" :h :command                         help for ex-command 'command'
+" :h 'option'                         help for option 'option'
+" :h function()                       help for function 'function'
+" :h modifier-key                     help for 'modifier'-'key' in normal mode
+" :h mode_modifier-key                help for 'modifier'-'key' in 'mode'
+" :h mode_modifier-key_modifier-key   help for 'modifier'-'key' 'modifier'-'key' in 'mode'
+
+" Examples for the above:
+" :h :sort
+" :h 'ai                " only one quote needed
+" :h bufnr(             " no need for both parenthesis
+" :h v_ctrl-g
+" :h i_ctrl-x_ctrl-o
+" :h ctrl-w             " no mode required for normal mode
+
+
 " When started as "evim", evim.vim will already have done these settings, bail
 " out.
 if v:progname =~? "evim"
@@ -340,6 +357,8 @@ call plug#begin()
   Plug 'tpope/vim-commentary'
 
   Plug 'navarasu/onedark.nvim'
+
+  Plug 'tpope/vim-rails'
 call plug#end()
 
 nmap <C-_> gccj
@@ -440,11 +459,13 @@ let g:airline#extensions#bufferline#enabled = 0
 let g:coc_global_extensions = [
       \ 'coc-clangd',
       \ 'coc-css',
+      \ 'coc-flow',
       \ 'coc-git',
       \ 'coc-go',
       \ 'coc-html',
       \ 'coc-json',
       \ 'coc-markdownlint',
+      \ 'coc-phpls',
       \ 'coc-pyright',
       \ 'coc-solargraph',
       \ 'coc-sh',

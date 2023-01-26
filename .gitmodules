@@ -67,3 +67,6 @@
 [submodule "plugged/onedark.nvim"]
 	path = plugged/onedark.nvim
 	url = https://github.com/navarasu/onedark.nvim.git
+[submodule "plugged/vim-rails"]
+	path = plugged/vim-rails
+	url = https://github.com/tpope/vim-rails.git
