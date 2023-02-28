@@ -182,6 +182,7 @@ set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
 set wildignore+=tags
 set wildignore+=*.tar.*
 set wildignore+=*/node_modules/**/*,*/dist/**/*
+set wildignore+=**/node_modules/**/*,*/dist/**/*
 set wildignorecase
 
 " Cycle buffers
@@ -193,11 +194,39 @@ nnoremap <C-l> :bnext<CR>
 nnoremap gb :ls<CR>:b<Space>
 nnoremap gsb :ls<CR>:sb<Space>
 
+" A command to make invocation easier
+command! -complete=buffer -nargs=+ BD call BDelete(<f-args>)
+
+function! BDelete(...)
+    let bufnames = []
+    " Get a list of all the buffers
+    for bufnumber in range(0, bufnr('$'))
+        if buflisted(bufnumber)
+            call add(bufnames, bufname(bufnumber))
+        endif
+    endfor
+    for argument in a:000
+        " Escape any backslashes, dots or spaces in the argument
+        let this_argument = escape(argument, '\ .')
+        " Turn * into .* for a regular expression match
+        let this_argument = substitute(this_argument, '\*', '.*', '')
+
+        " Iterate through the buffers
+        for buffername in bufnames
+            " If they match the provided regex and the buffer still exists
+            " delete the buffer
+            if match(buffername, this_argument) != -1 && bufexists(buffername)
+                exe 'bdelete' buffername
+            endif
+        endfor
+    endfor
+endfunction
+
 " Search files project wide
-nnoremap <leader>f :find ./*
-nnoremap <leader>s :sfind ./*
-nnoremap <leader>v :vert sfind ./*
-nnoremap <leader>t :tabfind ./*
+nnoremap <leader>f :find *
+nnoremap <leader>s :sfind *
+nnoremap <leader>v :vert sfind *
+nnoremap <leader>t :tabfind *
 
 " Search files from current directory
 nnoremap <leader>F :find ./<C-R>=expand('%:.:h').'/'<CR>
@@ -474,6 +503,29 @@ let g:coc_global_extensions = [
       \ 'coc-yaml',
       \ ]
 
+" instead of having ~/.vim/coc-settings.json
+" let s:LSP_CONFIG = {
+" \  'flow': {
+" \    'command': exepath('flow'),
+" \    'args': ['lsp'],
+" \    'filetypes': ['javascript', 'javascriptreact'],
+" \    'initializationOptions': {},
+" \    'requireRootPattern': 1,
+" \    'settings': {},
+" \    'rootPatterns': ['.flowconfig']
+" \  }
+" \}
+
+" let s:languageservers = {}
+" for [lsp, config] in items(s:LSP_CONFIG)
+"   let s:not_empty_cmd = !empty(get(config, 'command'))
+"   if s:not_empty_cmd | let s:languageservers[lsp] = config | endif
+" endfor
+
+" if !empty(s:languageservers)
+"   call coc#config('languageserver', s:languageservers)
+" endif
+
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
@@ -574,18 +626,20 @@ let g:ctrlsf_ignore_dir = ['bower_components', 'node_modules', 'dist', '.git']
 " nmap <C-F>w <Plug>CtrlSFCwordPath
 " " (Ctrl-F + o )Open CtrlSF window (Normal Mode)
 " nnoremap <C-F>o :CtrlSFOpen<CR>
-" " (Ctrl-F + t) Toggle CtrlSF window (Normal Mode)
-" nnoremap <C-F>t :CtrlSFToggle<CR>
+" (Ctrl-F + t) Toggle CtrlSF window (Normal Mode)
+nnoremap <C-F>t :CtrlSFToggle<CR>
 " " (Ctrl-F + t) Toggle CtrlSF window (Insert Mode)
 " inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
-nnoremap <leader>cf <Plug>CtrlSFPrompt
-xnoremap <leader>cf <Plug>CtrlSFVwordPath
+nnoremap <C-f> :CtrlSF ''<Left>
+" nnoremap <C-f> <Plug>CtrlSFPrompt
+" xnoremap <C-f> <Plug>CtrlSFVwordPath
+vnoremap <C-f> y:CtrlSF '<C-R>=escape(@",'/\')<CR>'<C-Left>
 
 "End Ctrlsf stuff
 
-vnoremap <C-f> y:Rg '<C-R>=escape(@",'/\')<CR>' 
-nnoremap <C-f> :Rg 
+" vnoremap <C-f> y:Rg '<C-R>=escape(@",'/\')<CR>' 
+" nnoremap <C-f> :Rg 
 
 highlight IndentBlanklineChar guifg=#2a3c47 gui=nocombine
 highlight IndentBlanklineContextChar guifg=#425e6f gui=nocombine
