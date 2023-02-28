@@ -390,8 +390,15 @@ call plug#begin()
   Plug 'tpope/vim-rails'
 call plug#end()
 
-nmap <C-_> gccj
-vmap <C-_> gc
+let os = substitute(system('uname'), '\n', '', '')
+if os ==# 'Linux'
+  nmap <C-_> gccj
+  vmap <C-_> gc
+else
+  nmap <C-/> gccj
+  vmap <C-/> gc
+endif
+
 let b:commentary_startofline = 1
 
 let g:context_max_height = 11
