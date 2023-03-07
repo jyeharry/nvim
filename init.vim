@@ -257,6 +257,7 @@ function! Mv(...)
 endfunction
 
 command! -nargs=1 -complete=file Mv call Mv(<f-args>)
+nnoremap <leader>Mv :Mv <C-R>=expand('%:p')<CR>
 
 " Edit new file using path of current file
 nnoremap <leader>e :edit <C-R>=expand('%:.:h').'/'<CR>
