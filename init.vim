@@ -155,7 +155,7 @@ cabbrev bterm bo term
 nmap <silent><C-Space> <C-w><C-]><C-w>T
 nmap <C-@> <C-Space>
 
-vnoremap // y/\v<C-R>=escape(@",'/\')<CR><CR>
+vnoremap // y/\v<C-R>=escape(@",'=/\.?*+^$[]{}()@<>')<CR><CR>
 nnoremap / /\v
 
 noremap <Leader>y "*y
@@ -233,6 +233,30 @@ nnoremap <leader>F :find ./<C-R>=expand('%:.:h').'/'<CR>
 nnoremap <leader>S :sfind ./<C-R>=expand('%:.:h').'/'<CR>
 nnoremap <leader>V :vert sfind ./<C-R>=expand('%:.:h').'/'<CR>
 nnoremap <leader>T :tabfind ./<C-R>=expand('%:.:h').'/'<CR>
+
+function! Mv(...)
+  let new_name = get(a:, 1, '')
+  let old_path = expand('%:p')
+
+  if stridx(new_name, '/') == 0
+    let new_path = new_name
+  elseif stridx(new_name, '.') == 0 && (stridx(new_name, '/') == 1 || new_name[1] == '.' && new_name[2] == '/')
+    let new_path = getcwd() . '/' . new_name
+  else
+    let new_path = expand('%:p:h') . '/' . new_name
+  endif
+
+  if filereadable(new_path)
+    echo "File with that name already exists"
+    return
+  endif
+
+  exe 'saveas! ' . fnameescape(new_path)
+  exe 'bd! ' . bufnr(old_path)
+  call delete(old_path)
+endfunction
+
+command! -nargs=1 -complete=file Mv call Mv(<f-args>)
 
 " Edit new file using path of current file
 nnoremap <leader>e :edit <C-R>=expand('%:.:h').'/'<CR>
@@ -613,11 +637,11 @@ let g:ctrlsf_default_view = 'normal'
 " Use absolute search by default
 let g:ctrlsf_regex_pattern = 1
 " Position of the search window
-let g:ctrlsf_position = 'right'
+let g:ctrlsf_position = 'bottom'
 " Async search
 let g:ctrlsf_search_mode = 'async'
 " Width or height of search window
-let g:ctrlsf_winsize = '70'
+let g:ctrlsf_winsize = '20'
 " Search from the current working directory
 let g:ctrlsf_default_root = 'project'
 " Directories to ignore during search
@@ -641,7 +665,7 @@ nnoremap <C-F>t :CtrlSFToggle<CR>
 nnoremap <C-f> :CtrlSF ''<Left>
 " nnoremap <C-f> <Plug>CtrlSFPrompt
 " xnoremap <C-f> <Plug>CtrlSFVwordPath
-vnoremap <C-f> y:CtrlSF '<C-R>=escape(@",'/\')<CR>'<C-Left>
+vnoremap <C-f> y:CtrlSF '<C-R>=escape(@",'=/\.?*+^$[]{}()@<>')<CR>'<C-Left>
 
 "End Ctrlsf stuff
 
