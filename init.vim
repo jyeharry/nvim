@@ -709,6 +709,14 @@ require('nvim-treesitter.configs').setup({
     endwise = { enable = true },
 })
 
+require('telescope').setup({
+  pickers = {
+    find_files = {
+      hidden = true
+    }
+  }
+})
+
 require("indent_blankline").setup({
     show_current_context = true,
 })
