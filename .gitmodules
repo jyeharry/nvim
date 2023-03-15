@@ -70,3 +70,12 @@
 [submodule "plugged/vim-rails"]
 	path = plugged/vim-rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule "plugged/plenary.nvim"]
+	path = plugged/plenary.nvim
+	url = git@github.com:nvim-lua/plenary.nvim.git
+[submodule "plugged/telescope-fzf-native.nvim"]
+	path = plugged/telescope-fzf-native.nvim
+	url = git@github.com:nvim-telescope/telescope-fzf-native.nvim.git
+[submodule "plugged/telescope.nvim"]
+	path = plugged/telescope.nvim
+	url = git@github.com:nvim-telescope/telescope.nvim.git

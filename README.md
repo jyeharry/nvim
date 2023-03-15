@@ -31,6 +31,15 @@ NodeJS needs to be installed for CoC to work.
 Visit [this page](https://github.com/universal-ctags/ctags) for instructions
 on how to install Universal Ctags.
 
+Visit [this page](https://github.com/sharkdp/fd) for instructions
+on how to install fd (for telescope.nvim).
+
+Visit [this page](https://github.com/BurntSushi/ripgrep) for instructions
+on how to install ripgrep (for ctrlsf and telescope.nvim).
+
+Follow the installation steps on [this page](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
+to get telescope-fzf-native.nvim working (relies on cmake and other tools).
+
 Follow the installation steps on this [github page](https://github.com/powerline/fonts)
 to install powerline fonts for vim-airline. Use `Hack` font.
 
