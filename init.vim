@@ -234,6 +234,9 @@ nnoremap <leader>S :sfind ./<C-R>=expand('%:.:h').'/'<CR>
 nnoremap <leader>V :vert sfind ./<C-R>=expand('%:.:h').'/'<CR>
 nnoremap <leader>T :tabfind ./<C-R>=expand('%:.:h').'/'<CR>
 
+" Break text surrounded by symbols such as brackets onto new lines using ', ' as point of line break
+nnoremap <leader>br :s/\v^(\s*)(.*)([\[\(\{\<])(.*)([\)\]\}\>])/\1\2\3\r\1\t\4\r\5/<CR>k:s/\v(\s*)(\w)*, /\1\2,\r\t/g<CR>jb%:noh<CR>
+
 function! Mv(...)
   let new_name = get(a:, 1, '')
   let old_path = expand('%:p')
@@ -467,7 +470,11 @@ function! ToggleNERDTree()
   if IsNERDTreeOpen()
     NERDTreeClose
   else
-    NERDTreeFind
+    if bufname('%') == '' && line('$') == 1
+      NERDTree
+    else
+      NERDTreeFind
+    endif
   endif
 endfunction
 
