@@ -422,11 +422,14 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim', {'branch': '0.1.x'}
 
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
+  Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 call plug#end()
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fg :lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
@@ -710,10 +713,36 @@ require('nvim-treesitter.configs').setup({
     endwise = { enable = true },
 })
 
+local lga_actions = require("telescope-live-grep-args.actions")
 require('telescope').setup({
   pickers = {
     find_files = {
       hidden = true
+    },
+  },
+  defaults = {
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--hidden",
+      "--smart-case",
+      "--trim",
+      "--glob",
+      "!.git*"
+    }
+  },
+  extensions = {
+    live_grep_args = {
+      auto_quoting = true,
+      mappings = {
+        i = {
+          ["<C-o>"] = lga_actions.quote_prompt(),
+        },
+      },
     }
   }
 })
