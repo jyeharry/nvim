@@ -316,6 +316,7 @@ au!
     au InsertLeave * call StopHL()
 augroup end
 
+" This prevents nvim from creating a no name buffer when running nvim without arguments
 autocmd VimEnter * if argc() == 0 | silent! bdelete | endif
 function! DetectFileType()
   if &filetype == ""
@@ -558,29 +559,6 @@ let g:coc_global_extensions = [
       \ 'coc-yaml',
       \ ]
 
-" instead of having ~/.vim/coc-settings.json
-" let s:LSP_CONFIG = {
-" \  'flow': {
-" \    'command': exepath('flow'),
-" \    'args': ['lsp'],
-" \    'filetypes': ['javascript', 'javascriptreact'],
-" \    'initializationOptions': {},
-" \    'requireRootPattern': 1,
-" \    'settings': {},
-" \    'rootPatterns': ['.flowconfig']
-" \  }
-" \}
-
-" let s:languageservers = {}
-" for [lsp, config] in items(s:LSP_CONFIG)
-"   let s:not_empty_cmd = !empty(get(config, 'command'))
-"   if s:not_empty_cmd | let s:languageservers[lsp] = config | endif
-" endfor
-
-" if !empty(s:languageservers)
-"   call coc#config('languageserver', s:languageservers)
-" endif
-
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
@@ -687,8 +665,6 @@ nnoremap <C-F>t :CtrlSFToggle<CR>
 " inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 nnoremap <C-f> :CtrlSF ''<Left>
-" nnoremap <C-f> <Plug>CtrlSFPrompt
-" xnoremap <C-f> <Plug>CtrlSFVwordPath
 vnoremap <C-f> y:CtrlSF '<C-R>=escape(@",'=/\.?*+^$[]{}()@<>')<CR>'<C-Left>
 
 "End Ctrlsf stuff
