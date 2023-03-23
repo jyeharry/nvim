@@ -82,3 +82,6 @@
 [submodule "plugged/telescope-live-grep-args.nvim"]
 	path = plugged/telescope-live-grep-args.nvim
 	url = git@github.com:nvim-telescope/telescope-live-grep-args.nvim.git
+[submodule "plugged/project.nvim"]
+	path = plugged/project.nvim
+	url = git@github.com:ahmedkhalf/project.nvim.git

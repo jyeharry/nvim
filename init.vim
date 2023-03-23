@@ -425,6 +425,8 @@ call plug#begin()
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
   Plug 'nvim-telescope/telescope-live-grep-args.nvim'
+
+  Plug 'ahmedkhalf/project.nvim'
 call plug#end()
 
 " Find files using Telescope command-line sugar.
@@ -433,6 +435,7 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg :lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fp <cmd>Telescope projects<cr>
 
 let os = substitute(system('uname'), '\n', '', '')
 if os ==# 'Linux'
@@ -689,8 +692,49 @@ require('nvim-treesitter.configs').setup({
     endwise = { enable = true },
 })
 
+require("project_nvim").setup({
+  -- the option to manually do so using `:ProjectRoot` command.
+  manual_mode = false,
+
+  -- Methods of detecting the root directory. **"lsp"** uses the native neovim
+  -- lsp, while **"pattern"** uses vim-rooter like glob pattern matching. Here
+  -- order matters: if one is not detected, the other is used as fallback. You
+  -- can also delete or rearangne the detection methods.
+  detection_methods = { "lsp", "pattern" },
+
+  -- All the patterns used to detect root dir, when **"pattern"** is in
+  -- detection_methods
+  patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
+
+  -- Table of lsp clients to ignore by name
+  -- eg: { "efm", ... }
+  ignore_lsp = {},
+
+  -- Don't calculate root dir on specific directories
+  -- Ex: { "~/.cargo/*", ... }
+  exclude_dirs = {},
+
+  -- When set to false, you will get a message when project.nvim changes your
+  -- directory.
+  silent_chdir = true,
+
+  -- What scope to change the directory, valid options are
+  -- * global (default)
+  -- * tab
+  -- * win
+  scope_chdir = 'global',
+
+  -- Path where project.nvim will store the project history for use in
+  -- telescope
+  datapath = vim.fn.stdpath("data"),
+})
+
 local lga_actions = require("telescope-live-grep-args.actions")
-require('telescope').setup({
+local telescope = require('telescope')
+
+telescope.load_extension('projects')
+
+telescope.setup({
   pickers = {
     find_files = {
       hidden = true
@@ -719,9 +763,11 @@ require('telescope').setup({
           ["<C-o>"] = lga_actions.quote_prompt(),
         },
       },
-    }
+    },
   }
 })
+
+-- telescope.extensions.projects.projects{}
 
 require("indent_blankline").setup({
     show_current_context = true,
