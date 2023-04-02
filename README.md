@@ -40,16 +40,8 @@ on how to install ripgrep (for ctrlsf and telescope.nvim).
 Follow the installation steps on [this page](https://github.com/nvim-telescope/telescope-fzf-native.nvim)
 to get telescope-fzf-native.nvim working (relies on cmake and other tools).
 
-Follow the installation steps on this [github page](https://github.com/powerline/fonts)
-to install powerline fonts for vim-airline. Use `Hack` font.
+Follow the installation steps on this [github page](https://github.com/ryanoasis/nerd-fonts)
+to install nerd fonts. Use `font-hack-nerd-font` font. The font then gets set in
+the terminal preferences.
 
-After everything has been installed, open neovim then run `:CocConfig` and paste
-the following contents:
-
-```bash
-{
-  "coc.preferences.noselect": false,
-  "suggest.enablePreselect": true,
-  "suggest.noselect": false
-}
-```
+Install [codicons.ttf](https://github.com/microsoft/vscode-codicons/raw/main/dist/codicon.ttf)

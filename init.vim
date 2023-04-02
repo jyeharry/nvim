@@ -34,6 +34,10 @@ if v:progname =~? "evim"
   finish
 endif
 
+" Disable netrw
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
+
 " Get the defaults that most users want.
 unlet! skip_defaults_vim 
 " source $VIMRUNTIME/defaults.vim
@@ -158,9 +162,6 @@ nmap <C-@> <C-Space>
 vnoremap // y/\v<C-R>=escape(@",'=/\.?*+^$[]{}()@<>')<CR><CR>
 nnoremap / /\v
 
-noremap <Leader>y "*y
-noremap <Leader>Y "+y
-
 set cursorline
 
 set background=dark
@@ -222,18 +223,6 @@ function! BDelete(...)
     endfor
 endfunction
 
-" Search files project wide
-nnoremap <leader>f :find *
-nnoremap <leader>s :sfind *
-nnoremap <leader>v :vert sfind *
-nnoremap <leader>t :tabfind *
-
-" Search files from current directory
-nnoremap <leader>F :find ./<C-R>=expand('%:.:h').'/'<CR>
-nnoremap <leader>S :sfind ./<C-R>=expand('%:.:h').'/'<CR>
-nnoremap <leader>V :vert sfind ./<C-R>=expand('%:.:h').'/'<CR>
-nnoremap <leader>T :tabfind ./<C-R>=expand('%:.:h').'/'<CR>
-
 " Break text surrounded by symbols such as brackets onto new lines using ', ' as point of line break
 nnoremap <leader>br :s/\v^(\s*)(.*)([\[\(\{\<])(.*)([\)\]\}\>])/\1\2\3\r\1\t\4\r\5/<CR>k:s/\v(\s*)(\w)*, /\1\2,\r\t/g<CR>jb%:noh<CR>
 
@@ -261,21 +250,6 @@ endfunction
 
 command! -nargs=1 -complete=file Mv call Mv(<f-args>)
 nnoremap <leader>Mv :Mv <C-R>=expand('%:p')<CR>
-
-" Edit new file using path of current file
-nnoremap <leader>e :edit <C-R>=expand('%:.:h').'/'<CR>
-
-" Search tags
-nnoremap <leader>j :tjump /
-
-" Copy absolute path to clipboard
-nnoremap <leader>ap :let @+=expand('%:p')<CR>:echo 'Copied absolute path'<CR>
-" Copy relative path to clipboard
-nnoremap <leader>rp :let @+=expand('%:.')<CR>:echo 'Copied relative path'<CR>
-" Copy directory name to clipboard
-nnoremap <leader>dir :let @+=expand('%:h')<CR>:echo 'Copied directory name'<CR>
-" Copy filename to clipboard
-nnoremap <leader>fn :let @+=expand('%:t')<CR>:echo 'Copied filename'<CR>
 
 " Quickly resize current window width (works same as z{nr}<CR> for changing window height; v is for vertical)
 nnoremap zv :vertical resize 
@@ -374,35 +348,11 @@ set clipboard=unnamedplus
 
 " Put plugins here
 call plug#begin()
-  Plug 'preservim/nerdtree' |
-      \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-      \ Plug 'PhilRunninger/nerdtree-visual-selection'
-
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-  Plug 'sainnhe/everforest'
-
-  Plug 'mhartington/oceanic-next'
-
-  Plug 'tpope/vim-fugitive'
-
-  Plug 'airblade/vim-gitgutter'
-
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
-  Plug 'jiangmiao/auto-pairs'
 
   Plug 'tpope/vim-surround'
 
-  Plug 'prettier/vim-prettier'
-
-  Plug 'vim-airline/vim-airline'
-
-  Plug 'vim-airline/vim-airline-themes'
-
   Plug 'ludovicchabant/vim-gutentags'
-
-  Plug 'dyng/ctrlsf.vim'
 
   Plug 'jremmen/vim-ripgrep'
 
@@ -410,11 +360,7 @@ call plug#begin()
 
   Plug 'vim-test/vim-test'
 
-  Plug 'wellle/context.vim'
-
   Plug 'tpope/vim-commentary'
-
-  Plug 'navarasu/onedark.nvim'
 
   Plug 'tpope/vim-rails'
 
@@ -427,15 +373,61 @@ call plug#begin()
   Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 
   Plug 'ahmedkhalf/project.nvim'
-call plug#end()
 
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fg :lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fp <cmd>Telescope projects<cr>
+  Plug 'williamboman/mason.nvim'
+
+  Plug 'williamboman/mason-lspconfig.nvim'
+
+  Plug 'neovim/nvim-lspconfig'
+  
+  Plug 'tamago324/nlsp-settings.nvim'
+
+  Plug 'jose-elias-alvarez/null-ls.nvim'
+
+  Plug 'hrsh7th/nvim-cmp'
+
+  Plug 'hrsh7th/cmp-nvim-lsp'
+
+  Plug 'hrsh7th/cmp-buffer'
+
+  Plug 'hrsh7th/cmp-path'
+
+  Plug 'hrsh7th/cmp-cmdline'
+
+  Plug 'hrsh7th/cmp-vsnip'
+
+  Plug 'hrsh7th/vim-vsnip'
+
+  Plug 'onsails/lspkind.nvim'
+
+  Plug 'nvim-tree/nvim-web-devicons'
+
+  Plug 'jay-babu/mason-null-ls.nvim'
+
+  Plug 'rafamadriz/friendly-snippets'
+
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  Plug 'nvim-tree/nvim-tree.lua'
+
+  Plug 'SmiteshP/nvim-navic'
+
+  Plug 'nvim-lualine/lualine.nvim'
+
+  Plug 'utilyre/barbecue.nvim'
+
+  Plug 'windwp/nvim-autopairs'
+
+  Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+
+  Plug 'lewis6991/gitsigns.nvim'
+
+  Plug 'RRethy/vim-illuminate'
+
+  Plug 'folke/which-key.nvim'
+call plug#end()
 
 let os = substitute(system('uname'), '\n', '', '')
 if os ==# 'Linux'
@@ -455,225 +447,13 @@ set signcolumn=yes
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-let g:prettier#quickfix_auto_focus = 1
-let g:prettier#autoformat_config_present = 1
-
-let g:prettier#config#print_width = 80
-let g:prettier#config#tab_width = 2
-let g:prettier#config#use_tabs = 'false'
-let g:prettier#config#arrow_parens = 'always'
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#insert_pragma = 'false'
-let g:prettier#config#prose_wrap = 'preserve'
-let g:prettier#config#require_pragma = 'false'
-let g:prettier#config#semi = 'false'
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#trailing_comma = 'all'
-
-let g:pear_tree_repeatable_expand=0
-
-let NERDTreeWinSize=30
-
-" Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Open NERDTree and do NERDTreeFind if NERDTree is not open, close otherwise
-function! ToggleNERDTree()
-  if IsNERDTreeOpen()
-    NERDTreeClose
-  else
-    if bufname('%') == '' && line('$') == 1
-      NERDTree
-    else
-      NERDTreeFind
-    endif
-  endif
-endfunction
-
-nnoremap <leader>n :NERDTreeFocus<CR>
-" nnoremap <C-n> :NERDTree<CR>
-" Mirror the NERDTree before showing it. This makes it the same on all tabs.
-nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>
-nnoremap <C-p> :call ToggleNERDTree()<CR>
-nnoremap <leader>c :NERDTreeCWD<CR>
-nnoremap <leader>r :NERDTreeVCS<CR>
-
-let NERDTreeShowHidden=1
-
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-let g:airline_theme='deus'
-
-let g:airline#extensions#tabline#enabled = 1
-
-function! AirlineInit()
-    let g:airline_section_a = airline#section#create(['mode'])
-    let g:airline_section_b = airline#section#create_left(['branch'])
-"    let g:airline_section_c = airline#section#create(['%t'])
-    let g:airline_section_c = airline#section#create(['%{expand("%:~:.")}'])
-    let g:airline_section_x = airline#section#create(['filetype'])
-    let g:airline_section_y = airline#section#create(['ffenc',' ','%{gutentags#statusline()}'])
-    let g:airline_section_z = airline#section#create(['%l','/','%L',':','%c'])
-endfunction
-autocmd VimEnter * call AirlineInit()
-
-let g:airline_powerline_fonts = 1
-
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#hunks#enabled = 1
-let g:airline#extensions#bufferline#enabled = 0
-
-" Coc stuff
-let g:coc_global_extensions = [
-      \ 'coc-clangd',
-      \ 'coc-css',
-      \ 'coc-cssmodules',
-      \ 'coc-flow',
-      \ 'coc-git',
-      \ 'coc-go',
-      \ 'coc-html',
-      \ 'coc-json',
-      \ 'coc-markdownlint',
-      \ 'coc-phpls',
-      \ 'coc-pyright',
-      \ 'coc-solargraph',
-      \ 'coc-sh',
-      \ 'coc-sql',
-      \ 'coc-tsserver',
-      \ 'coc-yaml',
-      \ ]
+nnoremap <C-p> :NvimTreeFindFileToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ CheckBackspace() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gI <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-nnoremap <leader>rf <Plug>(coc-refactor)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if CocAction('hasProvider', 'hover')
-    call CocActionAsync('doHover')
-  else
-    call feedkeys('K', 'in')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" End Coc stuff
-
 let g:gutentags_cache_dir = '~/.local/share/nvim/tags/'
-
-" Ctrlsf stuff
-
-" Use the rg tool as the backend
-let g:ctrlsf_backend = 'rg'
-" Auto close the results panel when opening a file
-let g:ctrlsf_auto_close = { "normal":0, "compact":0 }
-" Immediately switch focus to the search window
-let g:ctrlsf_auto_focus = { "at":"start" }
-" Don't open the preview window automatically
-let g:ctrlsf_auto_preview = 0
-" Use the smart case sensitivity search scheme
-let g:ctrlsf_case_sensitive = 'smart'
-" Normal mode, not compact mode
-let g:ctrlsf_default_view = 'normal'
-" Use absolute search by default
-let g:ctrlsf_regex_pattern = 1
-" Position of the search window
-let g:ctrlsf_position = 'bottom'
-" Async search
-let g:ctrlsf_search_mode = 'async'
-" Width or height of search window
-let g:ctrlsf_winsize = '20'
-" Search from the current working directory
-let g:ctrlsf_default_root = 'project'
-" Directories to ignore during search
-let g:ctrlsf_ignore_dir = ['bower_components', 'node_modules', 'dist', '.git']
-
-" (Ctrl+F) Open search prompt (Normal Mode)
-" nmap <C-F> <Plug>CtrlSFPrompt 
-" " (Ctrl-F + F) Open search prompt with selection (Visual Mode)
-" xmap <C-F>s <Plug>CtrlSFVwordPath
-" " (Ctrl-F + f) Perform search with selection (Visual Mode)
-" xmap <C-F>f <Plug>CtrlSFVwordExec
-" " (Ctrl-F + w) Open search prompt with current word (Normal Mode)
-" nmap <C-F>w <Plug>CtrlSFCwordPath
-" " (Ctrl-F + o )Open CtrlSF window (Normal Mode)
-" nnoremap <C-F>o :CtrlSFOpen<CR>
-" (Ctrl-F + t) Toggle CtrlSF window (Normal Mode)
-nnoremap <C-F>t :CtrlSFToggle<CR>
-" " (Ctrl-F + t) Toggle CtrlSF window (Insert Mode)
-" inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
-
-nnoremap <C-f> :CtrlSF ''<Left>
-vnoremap <C-f> y:CtrlSF '<C-R>=escape(@",'=/\.?*+^$[]{}()@<>')<CR>'<C-Left>
-
-"End Ctrlsf stuff
-
-" vnoremap <C-f> y:Rg '<C-R>=escape(@",'/\')<CR>' 
-" nnoremap <C-f> :Rg 
 
 highlight IndentBlanklineChar guifg=#2a3c47 gui=nocombine
 highlight IndentBlanklineContextChar guifg=#425e6f gui=nocombine
@@ -681,7 +461,12 @@ highlight IndentBlanklineContextChar guifg=#425e6f gui=nocombine
 let test#strategy = 'neovim'
 let g:test#neovim#start_normal = 1
 
+nnoremap <C-g> :Gitsigns next_hunk<CR>
+nnoremap <C-S-g> :Gitsigns prev_hunk<CR>
+
 lua <<EOF
+
+require("nvim-autopairs").setup()
 
 require('nvim-treesitter.configs').setup({
     ensure_installed = "all",
@@ -767,54 +552,323 @@ telescope.setup({
   }
 })
 
--- telescope.extensions.projects.projects{}
-
 require("indent_blankline").setup({
     show_current_context = true,
 })
 
-require('onedark').setup({
-    -- Main options --
-    style = 'darker', -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-    transparent = false,  -- Show/hide background
-    term_colors = true, -- Change terminal color as per the selected theme style
-    ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-    cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
+vim.cmd[[colorscheme tokyonight-night]]
 
-    -- toggle theme style ---
-    toggle_style_key = '<leader>ts', -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-    toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'}, -- List of styles to toggle between
+require("mason").setup()
 
-    -- Change code style ---
-    -- Options are italic, bold, underline, none
-    -- You can configure multiple style with comma seperated, For e.g., keywords = 'italic,bold'
-    code_style = {
-        comments = 'italic',
-        keywords = 'none',
-        functions = 'none',
-        strings = 'none',
-        variables = 'none'
-    },
-
-    -- Lualine options --
-    lualine = {
-        transparent = false, -- lualine center bar transparency
-    },
-
-    -- Custom Highlights --
-    colors = {}, -- Override default colors
-    highlights = {}, -- Override highlight groups
-
-    -- Plugins Config --
-    diagnostics = {
-        darker = true, -- darker colors for diagnostic
-        undercurl = true,   -- use undercurl instead of underline for diagnostics
-        background = true,    -- use background color for virtual text
-    },
+require("mason-lspconfig").setup({
+  automatic_installation = true,
 })
-require('onedark').load()
+
+local navic = require('nvim-navic')
+
+require("mason-lspconfig").setup_handlers {
+  function (server_name)
+    require("lspconfig")[server_name].setup({
+      on_attach = function(client, bufnr)
+        if client.server_capabilities.documentSymbolProvider then
+          navic.attach(client, bufnr)
+        end
+      end
+    })
+  end,
+}
+
+vim.diagnostic.config({
+  float = {
+    border = 'rounded',
+    header = '',
+  }
+})
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = 'rounded'
+})
+
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = 'rounded'
+})
+
+local lspconfig = require("lspconfig")
+
+vim.keymap.set('n', '<leader>g', vim.diagnostic.open_float)
+vim.keymap.set('n', '[g', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']g', vim.diagnostic.goto_next)
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<leader>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+  end,
+})
+
+local nlspsettings = require("nlspsettings")
+
+nlspsettings.setup({
+  config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
+  local_settings_dir = ".nlsp-settings",
+  local_settings_root_markers_fallback = { '.git' },
+  append_default_schemas = true,
+  loader = 'json'
+})
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities,
+}
+
+local global_capabilities = vim.lsp.protocol.make_client_capabilities()
+global_capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_config, {
+  capabilities = global_capabilities,
+})
+
+require("mason-null-ls").setup({
+    automatic_installation = false,
+    automatic_setup = true, -- Recommended, but optional
+})
+require("null-ls").setup()
+require 'mason-null-ls'.setup_handlers() -- If `automatic_setup` is true.
+
+local cmp = require'cmp'
+
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, { "i", "s" }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }, -- For vsnip users.
+  }, {
+    { name = 'buffer' },
+  }),
+  formatting = {
+    fields = { "kind", "abbr", "menu" },
+    format = function(entry, vim_item)
+      if vim.tbl_contains({ 'path' }, entry.source.name) then
+        local icon, hl_group = require('nvim-web-devicons').get_icon(entry:get_completion_item().label)
+        if icon then
+          vim_item.kind = icon
+          vim_item.kind_hl_group = hl_group
+          return vim_item
+        end
+      end
+      return require('lspkind').cmp_format({ with_text = false })(entry, vim_item)
+    end
+  },
+})
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local handlers = require('nvim-autopairs.completion.handlers')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done({
+    filetypes = {
+      -- "*" is a alias to all filetypes
+      ["*"] = {
+        ["("] = {
+          kind = {
+            cmp.lsp.CompletionItemKind.Function,
+            cmp.lsp.CompletionItemKind.Method,
+          },
+          handler = handlers["*"]
+        }
+      },
+    }
+  })
+)
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
+
+require('nvim-tree').setup()
+
+require("barbecue").setup({
+  exclude_filetypes = {
+    "help",
+    "startify",
+    "dashboard",
+    "packer",
+    "neogitstatus",
+    "NvimTree",
+    "Trouble",
+    "alpha",
+    "lir",
+    "Outline",
+    "spectre_panel",
+    "toggleterm",
+  },
+  show_modified = true
+})
+
+require('lualine').setup {
+  options = {
+    theme = 'tokyonight',
+    section_separators = '',
+    component_separators = '',
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff'},
+    lualine_c = {'filename'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'diagnostics'},
+    lualine_z = {'progress', '%l/%L:%c'}
+  },
+}
+
+require"bufferline".setup({
+  options = {
+    numbers = "buffer_id",
+    diagnostics = 'nvim_lsp',
+    diagnostics_indicator = function(count, level)
+      local icon = level:match("error") and " " or " "
+      return " " .. icon .. count
+    end,
+  }
+})
+
+require('gitsigns').setup({
+  current_line_blame = true,
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+    delay = 250,
+    ignore_whitespace = true,
+  },
+  numhl = true,
+})
+
+vim.keymap.set('n', '<C-n>', require('illuminate').goto_next_reference, { desc = "Move to next reference" })
+vim.keymap.set('n', '<C-S-n>', require('illuminate').goto_prev_reference, { desc = "Move to previous reference" })
+
+local wk = require("which-key")
+wk.register({
+  ['<leader>'] = {
+    f = {
+      name = 'Find',
+      f = { '<cmd>Telescope find_files<cr>', 'Files' },
+      g = { '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<CR>', 'Grep' },
+      b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
+      h = { '<cmd>Telescope help_tags<cr>', 'Help Tags' },
+      p = { '<cmd>Telescope projects<cr>', 'Projects' },
+    },
+    F = { '<cmd>Telescope resume<cr>', 'Resume Find' },
+    p = { '<cmd>lua vim.lsp.buf.format()<CR>', 'Format' },
+    g = {
+      name = 'Git',
+      d = { '<cmd>Gitsigns diffthis<CR><cmd>wincmd w<CR>', 'Diff' }, 
+      h = {
+        name = 'Hunk',
+        p = { '<cmd>Gitsigns preview_hunk_inline<CR>', 'Preview' },
+        r = { '<cmd>Gitsigns reset_hunk<CR>', 'Reset' },
+        s = { '<cmd>Gitsigns stage_hunk<CR>', 'Stage' },
+        u = { '<cmd>Gitsigns undo_stage_hunk<CR>', 'Undo Stage' },
+        v = { '<cmd>Gitsigns select_hunk<CR>', 'Select' },
+      }, 
+    },
+    e = { '<cmd>edit <C-R>=expand("%:.:h")."/"<CR>', 'New file in current dir' },
+    y = {
+      name = 'Yank',
+      ap = { "<cmd>let @+=expand('%:p')<CR>:echo 'Copied absolute path'<CR>", 'Absolute Path' },
+      rp = { "<cmd>let @+=expand('%:.')<CR>:echo 'Copied relative path'<CR>", 'Relative Path' },
+      dir = { "<cmd>let @+=expand('%:h')<CR>:echo 'Copied directory name'<CR>", 'Directory Name' },
+      fn = { "<cmd>let @+=expand('%:t')<CR>:echo 'Copied filename'<CR>", 'Filename' },
+    },
+  }
+})
 
 EOF
 
-highlight CocHighlightText ctermbg=237 guibg=#2f3640
-
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.javascriptreact = ['javascript']
+let g:vsnip_filetypes.typescriptreact = ['typescript']

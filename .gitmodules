@@ -85,3 +85,90 @@
 [submodule "plugged/project.nvim"]
 	path = plugged/project.nvim
 	url = git@github.com:ahmedkhalf/project.nvim.git
+[submodule "plugged/nvim-lspconfig"]
+	path = plugged/nvim-lspconfig
+	url = git@github.com:neovim/nvim-lspconfig.git
+[submodule "plugged/nlsp-settings.nvim"]
+	path = plugged/nlsp-settings.nvim
+	url = git@github.com:tamago324/nlsp-settings.nvim.git
+[submodule "plugged/null-ls.nvim"]
+	path = plugged/null-ls.nvim
+	url = git@github.com:jose-elias-alvarez/null-ls.nvim.git
+[submodule "plugged/mason-lspconfig.nvim"]
+	path = plugged/mason-lspconfig.nvim
+	url = git@github.com:williamboman/mason-lspconfig.nvim.git
+[submodule "plugged/mason.nvim"]
+	path = plugged/mason.nvim
+	url = git@github.com:williamboman/mason.nvim.git
+[submodule "plugged/nvim-cmp"]
+	path = plugged/nvim-cmp
+	url = git@github.com:hrsh7th/nvim-cmp.git
+[submodule "plugged/vim-vsnip"]
+	path = plugged/vim-vsnip
+	url = git@github.com:hrsh7th/vim-vsnip.git
+[submodule "plugged/cmp-nvim-lsp"]
+	path = plugged/cmp-nvim-lsp
+	url = git@github.com:hrsh7th/cmp-nvim-lsp.git
+[submodule "plugged/cmp-buffer"]
+	path = plugged/cmp-buffer
+	url = git@github.com:hrsh7th/cmp-buffer.git
+[submodule "plugged/cmp-path"]
+	path = plugged/cmp-path
+	url = git@github.com:hrsh7th/cmp-path.git
+[submodule "plugged/cmp-cmdline"]
+	path = plugged/cmp-cmdline
+	url = git@github.com:hrsh7th/cmp-cmdline.git
+[submodule "plugged/cmp-vsnip"]
+	path = plugged/cmp-vsnip
+	url = git@github.com:hrsh7th/cmp-vsnip.git
+[submodule "plugged/lspkind.nvim"]
+	path = plugged/lspkind.nvim
+	url = git@github.com:onsails/lspkind.nvim.git
+[submodule "plugged/nvim-web-dev-icons"]
+	path = plugged/nvim-web-dev-icons
+	url = git@github.com:nvim-tree/nvim-web-devicons.git
+[submodule "plugged/mason-null-ls.nvim"]
+	path = plugged/mason-null-ls.nvim
+	url = git@github.com:jay-babu/mason-null-ls.nvim.git
+[submodule "plugged/friendly-snippets"]
+	path = plugged/friendly-snippets
+	url = git@github.com:rafamadriz/friendly-snippets.git
+[submodule "plugged/tokyonight.nvim"]
+	path = plugged/tokyonight.nvim
+	url = git@github.com:folke/tokyonight.nvim.git
+[submodule "plugged/nvim-ts-context-commentstring"]
+	path = plugged/nvim-ts-context-commentstring
+	url = git@github.com:JoosepAlviste/nvim-ts-context-commentstring.git
+[submodule "plugged/nvim-tree.lua"]
+	path = plugged/nvim-tree.lua
+	url = git@github.com:nvim-tree/nvim-tree.lua.git
+[submodule "plugged/nvim-navic"]
+	path = plugged/nvim-navic
+	url = git@github.com:SmiteshP/nvim-navic.git
+[submodule "plugged/lualine.nvim"]
+	path = plugged/lualine.nvim
+	url = git@github.com:nvim-lualine/lualine.nvim.git
+[submodule "plugged/barbecue.nvim"]
+	path = plugged/barbecue.nvim
+	url = git@github.com:utilyre/barbecue.nvim.git
+[submodule "plugged/nvim-autopairs"]
+	path = plugged/nvim-autopairs
+	url = git@github.com:windwp/nvim-autopairs.git
+[submodule "plugged/bufferline.nvim"]
+	path = plugged/bufferline.nvim
+	url = git@github.com:akinsho/bufferline.nvim.git
+[submodule "plugged/gitsigns.nvim"]
+	path = plugged/gitsigns.nvim
+	url = git@github.com:lewis6991/gitsigns.nvim.git
+[submodule "plugged/vim-illuminate"]
+	path = plugged/vim-illuminate
+	url = git@github.com:RRethy/vim-illuminate.git
+[submodule "plugged/which-key.nvim"]
+	path = plugged/which-key.nvim
+	url = git@github.com:folke/which-key.nvim.git
+[submodule "plugged/vim-repeat"]
+	path = plugged/vim-repeat
+	url = git@github.com:tpope/vim-repeat.git
+[submodule "plugged/nvim-web-devicons"]
+	path = plugged/nvim-web-devicons
+	url = git@github.com:nvim-tree/nvim-web-devicons.git
