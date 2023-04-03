@@ -75,6 +75,8 @@ if has('syntax') && has('eval')
   packadd! matchit
 endif
 
+set timeoutlen=750
+
 set ignorecase
 set smartcase
 
@@ -110,6 +112,11 @@ inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 vnoremap <S-Up> :m '<-2<CR>gv=gv
 vnoremap <S-Down> :m '>+1<CR>gv=gv
+
+" File wide search and replace with very magic and global flag
+nnoremap <leader>sr :%s/\v//g<Left><Left><Left>
+" File wide search and replace for highlighted word with global flag
+vnoremap <leader>sr y:%s/<C-R>=escape(@",'/')<CR>//g<Left><Left>
 
 " Delete selected text without yanking
 vnoremap p "0p
@@ -770,7 +777,7 @@ cmp.setup.cmdline(':', {
   })
 })
 
-require('nvim-tree').setup()
+require('nvim-tree').setup({ open_on_setup = true })
 
 require("barbecue").setup({
   exclude_filetypes = {
