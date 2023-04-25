@@ -618,6 +618,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
@@ -806,7 +807,7 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff'},
-    lualine_c = {'filename'},
+    lualine_c = {{'filename', path = 1}},
     lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'diagnostics'},
     lualine_z = {'progress', '%l/%L:%c'}
@@ -863,7 +864,7 @@ wk.register({
         v = { '<cmd>Gitsigns select_hunk<CR>', 'Select' },
       }, 
     },
-    e = { '<cmd>edit <C-R>=expand("%:.:h")."/"<CR>', 'New file in current dir' },
+    e = { ":edit <C-R>=expand('%:p:h').'/'<CR>", 'New file in current dir' },
     y = {
       name = 'Yank',
       ap = { "<cmd>let @+=expand('%:p')<CR>:echo 'Copied absolute path'<CR>", 'Absolute Path' },
