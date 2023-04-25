@@ -455,7 +455,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 
 nnoremap <C-p> :NvimTreeFindFileToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>rf :NvimTreeRefresh<CR>
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
