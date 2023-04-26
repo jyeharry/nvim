@@ -434,6 +434,8 @@ call plug#begin()
   Plug 'RRethy/vim-illuminate'
 
   Plug 'folke/which-key.nvim'
+
+  Plug 'windwp/nvim-ts-autotag'
 call plug#end()
 
 let os = substitute(system('uname'), '\n', '', '')
@@ -524,6 +526,27 @@ require("project_nvim").setup({
 local lga_actions = require("telescope-live-grep-args.actions")
 local telescope = require('telescope')
 
+function vim.getVisualSelection()
+	vim.cmd('noau normal! "vy"')
+	local text = vim.fn.getreg('v')
+	vim.fn.setreg('v', {})
+
+	text = string.gsub(text, "\n", "")
+	if #text > 0 then
+		return text
+	else
+		return ''
+	end
+end
+
+local keymap = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
+keymap('v', '<leader>fg', function()
+	local text = vim.getVisualSelection()
+  telescope.extensions.live_grep_args.live_grep_args({ default_text = text })
+end, opts)
+
 telescope.load_extension('projects')
 
 telescope.setup({
@@ -599,6 +622,8 @@ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
   border = 'rounded'
 })
+
+require('nvim-ts-autotag').setup()
 
 local lspconfig = require("lspconfig")
 

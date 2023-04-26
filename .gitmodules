@@ -172,3 +172,6 @@
 [submodule "plugged/nvim-web-devicons"]
 	path = plugged/nvim-web-devicons
 	url = git@github.com:nvim-tree/nvim-web-devicons.git
+[submodule "plugged/nvim-ts-autotag"]
+	path = plugged/nvim-ts-autotag
+	url = git@github.com:windwp/nvim-ts-autotag.git
