@@ -447,6 +447,9 @@ else
   vmap <C-/> gc
 endif
 
+" :edit but with path to files directory
+nnoremap <leader>e :edit <C-R>=expand('%:p:h').'/'<CR>
+
 let b:commentary_startofline = 1
 
 let g:context_max_height = 11
@@ -889,7 +892,6 @@ wk.register({
         v = { '<cmd>Gitsigns select_hunk<CR>', 'Select' },
       }, 
     },
-    e = { ":edit <C-R>=expand('%:p:h').'/'<CR>", 'New file in current dir' },
     y = {
       name = 'Yank',
       ap = { "<cmd>let @+=expand('%:p')<CR>:echo 'Copied absolute path'<CR>", 'Absolute Path' },
