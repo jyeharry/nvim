@@ -118,7 +118,7 @@ nnoremap <leader>sr :%s/\v//g<Left><Left><Left>
 " File wide search and replace for highlighted word with global flag
 vnoremap <leader>sr y:%s/<C-R>=escape(@",'/')<CR>//g<Left><Left>
 
-" Delete selected text without yanking
+" Paste over selected text without yanking
 vnoremap p "0p
 
 " Set backup directories
@@ -150,6 +150,7 @@ set autoindent
 set smartindent
 
 set number
+set relativenumber
 set numberwidth=4
 
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
