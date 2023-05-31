@@ -428,7 +428,7 @@ call plug#begin()
 
   Plug 'windwp/nvim-autopairs'
 
-  Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
+  Plug 'akinsho/bufferline.nvim', { 'tag': 'v4.*' }
 
   Plug 'lewis6991/gitsigns.nvim'
 
@@ -685,9 +685,9 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 require("mason-null-ls").setup({
     automatic_installation = false,
     automatic_setup = true, -- Recommended, but optional
+    handlers = {},
 })
 require("null-ls").setup()
-require 'mason-null-ls'.setup_handlers() -- If `automatic_setup` is true.
 
 local cmp = require'cmp'
 
