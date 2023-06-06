@@ -1,48 +1,12 @@
-[submodule "plugged/coc.nvim"]
-       path = plugged/coc.nvim
-       url = https://github.com/neoclide/coc.nvim.git
-[submodule "plugged/everforest"]
-	path = plugged/everforest
-	url = https://github.com/sainnhe/everforest.git
 [submodule "plugged/vim-surround"]
 	path = plugged/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "plugged/nerdtree"]
-	path = plugged/nerdtree
-	url = https://github.com/preservim/nerdtree.git
-[submodule "plugged/nerdtree-git-plugin"]
-	path = plugged/nerdtree-git-plugin
-	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
-[submodule "plugged/nerdtree-visual-selection"]
-	path = plugged/nerdtree-visual-selection
-	url = https://github.com/PhilRunninger/nerdtree-visual-selection.git
-[submodule "plugged/vim-prettier"]
-	path = plugged/vim-prettier
-	url = https://github.com/prettier/vim-prettier.git
-[submodule "plugged/vim-airline"]
-	path = plugged/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
-[submodule "plugged/vim-airline-themes"]
-	path = plugged/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes.git
-[submodule "plugged/vim-fugitive"]
-	path = plugged/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "plugged/vim-gitgutter"]
-	path = plugged/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "plugged/oceanic-next"]
-	path = plugged/oceanic-next
-	url = https://github.com/mhartington/oceanic-next.git
 [submodule "plugged/nvim-treesitter"]
 	path = plugged/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "plugged/vim-gutentags"]
 	path = plugged/vim-gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
-[submodule "plugged/ctrlsf.vim"]
-	path = plugged/ctrlsf.vim
-	url = https://github.com/dyng/ctrlsf.vim.git
 [submodule "vim-fugitive"]
 	path = vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -55,18 +19,9 @@
 [submodule "plugged/vim-test"]
 	path = plugged/vim-test
 	url = https://github.com/vim-test/vim-test.git
-[submodule "plugged/context.vim"]
-	path = plugged/context.vim
-	url = https://github.com/wellle/context.vim.git
 [submodule "plugged/vim-commentary"]
 	path = plugged/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "plugged/auto-pairs"]
-	path = plugged/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs.git
-[submodule "plugged/onedark.nvim"]
-	path = plugged/onedark.nvim
-	url = https://github.com/navarasu/onedark.nvim.git
 [submodule "plugged/vim-rails"]
 	path = plugged/vim-rails
 	url = https://github.com/tpope/vim-rails.git
