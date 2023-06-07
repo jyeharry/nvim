@@ -441,6 +441,8 @@ call plug#begin()
   Plug 'github/copilot.vim'
 call plug#end()
 
+inoremap <silent><script><expr> <C-CR> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 inoremap <C-j> <Plug>(copilot-next)
 inoremap <C-k> <Plug>(copilot-previous)
 
@@ -487,12 +489,20 @@ lua <<EOF
 require("nvim-autopairs").setup()
 
 require('nvim-treesitter.configs').setup({
-    ensure_installed = "all",
-    highlight = { enable = true },
-    indent = { enable = true },
-    context_commentstring = { enable = true },
-    autotag = { enable = true },
-    endwise = { enable = true },
+  ensure_installed = "all",
+  highlight = { enable = true },
+  indent = { enable = true },
+  context_commentstring = { enable = true },
+  autotag = { enable = true },
+  endwise = { enable = true },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<Enter>",
+      node_incremental = "<Enter>",
+      node_decremental = "<BS>",
+    },
+  },
 })
 
 require("project_nvim").setup({
@@ -723,7 +733,7 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<Down>'] = cmp.mapping(function(fallback)
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif vim.fn["vsnip#available"](1) == 1 then
@@ -735,7 +745,7 @@ cmp.setup({
       end
     end, { "i", "s" }),
 
-    ["<Up>"] = cmp.mapping(function()
+    ["<S-Tab>"] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
