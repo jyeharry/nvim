@@ -437,7 +437,12 @@ call plug#begin()
   Plug 'folke/which-key.nvim'
 
   Plug 'windwp/nvim-ts-autotag'
+
+  Plug 'github/copilot.vim'
 call plug#end()
+
+inoremap <C-j> <Plug>(copilot-next)
+inoremap <C-k> <Plug>(copilot-previous)
 
 let os = substitute(system('uname'), '\n', '', '')
 if os ==# 'Linux'
@@ -718,7 +723,7 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ['<Down>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif vim.fn["vsnip#available"](1) == 1 then
@@ -730,7 +735,7 @@ cmp.setup({
       end
     end, { "i", "s" }),
 
-    ["<S-Tab>"] = cmp.mapping(function()
+    ["<Up>"] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then

@@ -130,3 +130,6 @@
 [submodule "plugged/nvim-ts-autotag"]
 	path = plugged/nvim-ts-autotag
 	url = git@github.com:windwp/nvim-ts-autotag.git
+[submodule "plugged/copilot.vim"]
+	path = plugged/copilot.vim
+	url = git@github.com:github/copilot.vim.git
