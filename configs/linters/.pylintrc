@@ -1,0 +1,45 @@
+ [FORMAT]
+
+# Maximum allowed line length
+max-line-length=80
+
+[BASIC]
+
+# Specify which message codes to be shown
+# (C: convention, R: refactor, W: warning, E: error, F: fatal)
+# For PEP 8 adherence, we often select C, E, and W
+# select=C,E,W
+
+# Ignore specific checks not in accordance with PEP 8
+ignore=C0326,C0330
+
+const-naming-style=any
+
+include-naming-hint=y
+
+[TYPECHECK]
+
+# List of module names for which member attributes should not be checked
+ignored-modules=numpy
+
+[MESSAGES CONTROL]
+
+# Enable or disable specific checks globally
+disable=missing-docstring,
+        invalid-name,
+        too-many-arguments,
+        too-many-locals,
+        too-many-instance-attributes,
+        too-few-public-methods,
+        fixme
+
+[REPORTS]
+
+# Limit the number of reported issues
+reports=no
+
+[IMPORTS]
+
+# List of additional import names to consider as known
+known-third-party=django
+
