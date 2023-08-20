@@ -725,16 +725,11 @@ lspconfig.util.default_config = vim.tbl_extend("force", lspconfig.util.default_c
 null_ls = require("null-ls")
 null_ls.setup({
   sources = {
-    null_ls.builtins.diagnostics.pylint.with({
-      extra_args = {
-        string.format("--rcfile=%s", vim.fn.expand("$NVD/configs/linters/.pylintrc")),
-      }
-    }),
     null_ls.builtins.formatting.black.with({
       extra_args = { '--line-length=80' }
     }),
     null_ls.builtins.formatting.prettierd.with({
-      env = { PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("$NVD/configs/formatters/.prettierrc")}
+      env = { PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("$NVD/config/formatters/.prettierrc")}
     })
   }
 })
