@@ -636,22 +636,6 @@ require("mason").setup()
 
 require("mason-lspconfig").setup({
   automatic_installation = true,
-  ensure_installed = {
-    'black',
-    'css-lsp',
-    'cssmodules-language-server',
-    'emmet-ls',
-    'html-lsp',
-    'isort',
-    'prettierd',
-    'pylint',
-    'pyright',
-    'svelte-language-server',
-    'typescript-language-server',
-    'vim-language-server',
-    'vint',
-    'yamllint',
-  }
 })
 
 local navic = require('nvim-navic')
@@ -751,9 +735,25 @@ null_ls.setup({
 })
 
 require("mason-null-ls").setup({
-    automatic_installation = false,
-    automatic_setup = true, -- Recommended, but optional
-    handlers = {},
+  automatic_installation = false,
+  automatic_setup = true, -- Recommended, but optional
+  handlers = {},
+  ensure_installed = {
+    'black',
+    'css-lsp',
+    'cssmodules-language-server',
+    'emmet-ls',
+    'html-lsp',
+    'isort',
+    'prettierd',
+    'pylint',
+    'pyright',
+    'svelte-language-server',
+    'typescript-language-server',
+    'vim-language-server',
+    'vint',
+    'yamllint',
+  }
 })
 
 local cmp = require'cmp'
