@@ -636,6 +636,22 @@ require("mason").setup()
 
 require("mason-lspconfig").setup({
   automatic_installation = true,
+  ensure_installed = {
+    'black',
+    'css-lsp',
+    'cssmodules-language-server',
+    'emmet-ls',
+    'html-lsp',
+    'isort',
+    'prettierd',
+    'pylint',
+    'pyright',
+    'svelte-language-server',
+    'typescript-language-server',
+    'vim-language-server',
+    'vint',
+    'yamllint',
+  }
 })
 
 local navic = require('nvim-navic')
