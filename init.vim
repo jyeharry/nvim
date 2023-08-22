@@ -972,6 +972,8 @@ wk.register({
 
 EOF
 
-let g:vsnip_filetypes = {}
-let g:vsnip_filetypes.javascriptreact = ['javascript']
-let g:vsnip_filetypes.typescriptreact = ['typescript']
+" let g:vsnip_filetypes = {}
+" let g:vsnip_filetypes.javascriptreact = ['javascript']
+" let g:vsnip_filetypes.typescriptreact = ['typescript']
+let g:vsnip_extra_mapping = v:true 
+let g:vsnip_snippet_dir = expand('$NVD/config/snippets')
