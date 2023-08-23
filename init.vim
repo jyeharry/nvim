@@ -118,6 +118,9 @@ nnoremap <leader>sr :%s/\v//g<Left><Left><Left>
 " File wide search and replace for highlighted word with global flag
 vnoremap <leader>sr y:%s/<C-R>=escape(@",'/')<CR>//g<Left><Left>
 
+nnoremap x "_x
+nnoremap X "_X
+
 " Paste over selected text without yanking
 vnoremap p "0p
 " Paste at matching indentation
