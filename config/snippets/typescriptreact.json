@@ -9,7 +9,7 @@
       "}",
       "",
       "const ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}: FC<${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Props> = ({$2}) => {",
-      "  return <div>$3</div>",
+      "  return ($3)",
       "}",
       "",
       "export default ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}"

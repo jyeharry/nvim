@@ -877,7 +877,10 @@ cmp.setup.cmdline(':', {
   })
 })
 
-require('nvim-tree').setup({ open_on_setup = true })
+require('nvim-tree').setup({
+  open_on_setup = true,
+  git = { ignore = false },
+})
 
 require("barbecue").setup({
   exclude_filetypes = {
@@ -943,7 +946,7 @@ wk.register({
   ['<leader>'] = {
     f = {
       name = 'Find',
-      f = { '<cmd>Telescope find_files<cr>', 'Files' },
+      f = { '<cmd>Telescope find_files hidden=true no_ignore=true<cr>', 'Files' },
       g = { '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<CR>', 'Grep' },
       b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
       h = { '<cmd>Telescope help_tags<cr>', 'Help Tags' },
