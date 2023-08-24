@@ -619,6 +619,8 @@ telescope.setup({
     file_ignore_patterns = {
       'node_modules/',
       '.next/',
+      'package-lock.json',
+      'yarn.lock',
     }
   },
   extensions = {
