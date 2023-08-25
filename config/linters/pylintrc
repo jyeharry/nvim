@@ -31,7 +31,9 @@ disable=missing-docstring,
         too-many-locals,
         too-many-instance-attributes,
         too-few-public-methods,
-        fixme
+        fixme,
+        trailing-whitespace,
+        trailing-newlines,
 
 [REPORTS]
 
