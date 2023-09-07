@@ -121,6 +121,9 @@ vnoremap <leader>sr y:%s/<C-R>=escape(@",'/')<CR>//g<Left><Left>
 nnoremap x "_x
 nnoremap X "_X
 
+nnoremap s "_s
+nnoremap S "_S
+
 " Paste over selected text without yanking
 vnoremap p "0p
 " Paste at matching indentation
