@@ -118,11 +118,22 @@ nnoremap <leader>sr :%s/\v//g<Left><Left><Left>
 " File wide search and replace for highlighted word with global flag
 vnoremap <leader>sr y:%s/<C-R>=escape(@",'/')<CR>//g<Left><Left>
 
+" Make x, s and c use the blackhole register
 nnoremap x "_x
 nnoremap X "_X
+vnoremap x "_x
+vnoremap X "_X
 
 nnoremap s "_s
 nnoremap S "_S
+vnoremap s "_s
+vnoremap S "_S
+
+nnoremap c "_c
+nnoremap cc "_cc
+nnoremap C "_C
+vnoremap c "_c
+vnoremap C "_C
 
 " Paste over selected text without yanking
 vnoremap p "0p
