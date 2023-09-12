@@ -146,6 +146,8 @@ nnoremap H ^
 nnoremap L $
 onoremap H ^
 onoremap L $
+vnoremap H ^
+vnoremap L $
 
 " Map key chord `jk` to <Esc>.
 let g:esc_j_lasttime = 0
