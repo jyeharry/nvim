@@ -394,6 +394,12 @@ endfunction
 
 cnoremap <expr> <CR> CCR()
 
+nnoremap <C-c> :bdelete<CR>
+
+" jump down and up half a screen
+nnoremap <C-j> <C-d>
+nnoremap <C-k> <C-u>
+
 autocmd BufLeave * if &buftype=="terminal" | setlocal nobuflisted | endif
 
 set clipboard=unnamedplus
@@ -713,7 +719,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<C-S-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set('n', '<leader>wl', function()
