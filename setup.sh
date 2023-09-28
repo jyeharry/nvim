@@ -2,6 +2,8 @@
 
 git submodule update --init --recursive
 
+mkdir -p $HOME/.config/nvim
+
 # Create a symlink from `~/.local/share/nvim/init.vim` to `~/.config/nvim/init.vim`
 ln -s $HOME/.local/share/nvim/init.vim $HOME/.config/nvim/init.vim
 
