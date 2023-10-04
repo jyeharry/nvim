@@ -137,6 +137,7 @@ vnoremap C "_C
 
 " Paste over selected text without yanking
 vnoremap p "0p
+vnoremap P "0P
 " Paste at matching indentation
 nnoremap p p=`]
 
