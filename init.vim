@@ -1023,7 +1023,7 @@ wk.register({
       name = 'Yank',
       ap = { "<cmd>let @+=expand('%:p')<CR>:echo 'Copied absolute path'<CR>", 'Absolute Path' },
       rp = { "<cmd>let @+=expand('%:.')<CR>:echo 'Copied relative path'<CR>", 'Relative Path' },
-      dir = { "<cmd>let @+=expand('%:h')<CR>:echo 'Copied directory name'<CR>", 'Directory Name' },
+      dn = { "<cmd>let @+=expand('%:h')<CR>:echo 'Copied directory name'<CR>", 'Directory Name' },
       fn = { "<cmd>let @+=expand('%:t')<CR>:echo 'Copied filename'<CR>", 'Filename' },
     },
   }
