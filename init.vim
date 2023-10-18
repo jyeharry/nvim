@@ -624,6 +624,9 @@ telescope.setup({
     find_files = {
       hidden = true
     },
+    lsp_references = {
+      show_line = false,
+    },
   },
   defaults = {
     vimgrep_arguments = {
