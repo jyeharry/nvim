@@ -775,6 +775,7 @@ require("mason-null-ls").setup({
     'css-lsp',
     'cssmodules-language-server',
     'emmet-ls',
+    'eslint_d',
     'html-lsp',
     'isort',
     'prettierd',
