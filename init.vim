@@ -998,12 +998,24 @@ require('gitsigns').setup({
 vim.keymap.set('n', '<C-n>', require('illuminate').goto_next_reference, { desc = "Move to next reference" })
 vim.keymap.set('n', '<C-S-n>', require('illuminate').goto_prev_reference, { desc = "Move to previous reference" })
 
+function find_files_by_input_directory()
+  local user_input = vim.fn.input("Enter search directory: ")
+  local telescope_command = "Telescope find_files hidden=true no_ignore=true search_dirs=%s"
+
+  if user_input ~= "" then
+    vim.cmd(string.format(telescope_command, user_input))
+  else
+    vim.cmd(string.format(telescope_command, '.'))
+  end
+end
+
 local wk = require("which-key")
 wk.register({
   ['<leader>'] = {
     f = {
       name = 'Find',
       b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
+      d = { find_files_by_input_directory, 'Files under Directory' },
       f = { '<cmd>Telescope find_files hidden=true no_ignore=true<cr>', 'Files' },
       g = { '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<CR>', 'Grep' },
       h = { '<cmd>Telescope help_tags<cr>', 'Help Tags' },
