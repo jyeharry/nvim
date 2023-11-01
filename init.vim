@@ -1003,9 +1003,9 @@ wk.register({
   ['<leader>'] = {
     f = {
       name = 'Find',
+      b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
       f = { '<cmd>Telescope find_files hidden=true no_ignore=true<cr>', 'Files' },
       g = { '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<CR>', 'Grep' },
-      b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
       h = { '<cmd>Telescope help_tags<cr>', 'Help Tags' },
       p = { '<cmd>Telescope projects<cr>', 'Projects' },
     },
@@ -1013,6 +1013,8 @@ wk.register({
     p = { '<cmd>lua vim.lsp.buf.format()<CR>', 'Format' },
     g = {
       name = 'Git',
+      b = { '<cmd>Telescope git_branches<CR>', 'Branches'},
+      c = { '<cmd>Telescope git_commits<CR>', 'Commits'},
       d = { '<cmd>Gitsigns diffthis<CR><cmd>wincmd w<CR>', 'Diff' }, 
       h = {
         name = 'Hunk',
