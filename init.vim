@@ -647,6 +647,7 @@ telescope.setup({
       '.next/',
       'package-lock.json',
       'yarn.lock',
+      '.git/'
     }
   },
   extensions = {
