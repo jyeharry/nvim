@@ -490,12 +490,23 @@ call plug#begin()
   Plug 'windwp/nvim-ts-autotag'
 
   Plug 'github/copilot.vim'
+
+  Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 call plug#end()
 
-inoremap <silent><script><expr> <C-CR> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-inoremap <C-j> <Plug>(copilot-next)
-inoremap <C-k> <Plug>(copilot-previous)
+" Github Copilot mappings
+" inoremap <silent><script><expr> <C-CR> copilot#Accept("\<CR>")
+" let g:copilot_no_tab_map = v:true
+" inoremap <C-j> <Plug>(copilot-next)
+" inoremap <C-k> <Plug>(copilot-previous)
+
+" Codeium mappings
+let g:codeium_disable_bindings = 1
+inoremap <script><silent><nowait><expr> <C-CR> codeium#Accept()
+inoremap <C-j> <Cmd>call codeium#CycleCompletions(1)<CR>
+inoremap <C-k> <Cmd>call codeium#CycleCompletions(-1)<CR>
+inoremap <C-x> <Cmd>call codeium#Clear()<CR>
+inoremap <C-c> <Cmd>call codeium#Complete()<CR>
 
 let os = substitute(system('uname'), '\n', '', '')
 if os ==# 'Linux'

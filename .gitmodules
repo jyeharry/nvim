@@ -133,3 +133,6 @@
 [submodule "plugged/copilot.vim"]
 	path = plugged/copilot.vim
 	url = git@github.com:github/copilot.vim.git
+[submodule "plugged/codeium.vim"]
+	path = plugged/codeium.vim
+	url = git@github.com:Exafunction/codeium.vim.git
