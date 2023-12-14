@@ -8,11 +8,9 @@
       "  $1",
       "}",
       "",
-      "const ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}: FC<${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Props> = ({$2}) => {",
+      "export const ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}: FC<${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Props> = ({ $2 }) => {",
       "  return ($3)",
       "}",
-      "",
-      "export default ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}"
     ],
     "description": "Typescript React Function Component"
   },
@@ -25,11 +23,9 @@
       "  children: ReactNode",
       "}",
       "",
-      "const $1Layout: FC<$1LayoutProps> = ({ children }) => {",
+      "export const $1Layout: FC<$1LayoutProps> = ({ children }) => {",
       "  return ($2)",
       "}",
-      "",
-      "export default $1Layout"
     ]
   },
   "useState": {
