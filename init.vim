@@ -136,10 +136,10 @@ vnoremap c "_c
 vnoremap C "_C
 
 " Paste over selected text without yanking
-vnoremap p "0p
-vnoremap P "0P
+vnoremap p "+P
 " Paste at matching indentation
-nnoremap p p=`]
+noremap p p=`]
+noremap P P=`]
 
 nnoremap U <C-R>
 
