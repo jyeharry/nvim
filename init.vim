@@ -656,6 +656,9 @@ telescope.setup({
       'package-lock.json',
       'yarn.lock',
       '.git/'
+    },
+    cache_picker = {
+      num_pickers = 50,
     }
   },
   extensions = {
@@ -1026,6 +1029,7 @@ wk.register({
       b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
       d = { find_files_by_input_directory, 'Files under Directory' },
       f = { '<cmd>Telescope find_files hidden=true no_ignore=true<cr>', 'Files' },
+      F = { '<cmd>Telescope pickers<cr>', 'Telescope history' },
       g = { '<cmd>lua require(\'telescope\').extensions.live_grep_args.live_grep_args()<CR>', 'Grep' },
       h = { '<cmd>Telescope help_tags<cr>', 'Help Tags' },
       p = { '<cmd>Telescope projects<cr>', 'Projects' },
