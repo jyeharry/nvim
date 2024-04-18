@@ -135,9 +135,6 @@ nnoremap C "_C
 vnoremap c "_c
 vnoremap C "_C
 
-" Paste over selected text without yanking
-vnoremap p "+P
-" Paste at matching indentation
 noremap p p=`]
 noremap P P=`]
 
